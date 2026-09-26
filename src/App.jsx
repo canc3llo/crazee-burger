@@ -18,7 +18,7 @@ function App() {
         <div>
           <h1>Get started</h1>
           <p>
-            BG <code>src/App.jsx</code> and save to test <code>HMR</code>
+            Zebi <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
         </div>
         <button
