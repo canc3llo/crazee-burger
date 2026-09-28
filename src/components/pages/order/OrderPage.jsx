@@ -1,18 +1,14 @@
 import React from 'react'
-import { useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 
 export default function OrderPage() {
-  const navigate = useNavigate()
-
-  const handleClick = () => {
-    navigate("/")
-  }
-
   return (
     <div>
       <h1>Bonjour</h1>
       <br/>
-      <button onClick={handleClick}>Déconnexion</button>
+      <Link to="/">
+        <button>Déconnexion</button>
+      </Link>
     </div>
   )
 }

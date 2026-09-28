@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from "react-router"
+import { useNavigate, Link } from "react-router"
 
 export default function LoginForm() {
     //state ((data) (variables))
@@ -30,5 +30,6 @@ export default function LoginForm() {
           value={inputValue}
           onChange={handleChange}/>
         <button>Accédez à votre espace</button>
+        <Link to="/order">ICI</Link>
       </form>)
 }
