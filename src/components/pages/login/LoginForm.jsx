@@ -16,19 +16,17 @@ export default function LoginForm() {
       }
     
       //render
-      return(
-        <div>
+      return( 
+        <form onSubmit={handleSubmit}>
           <h1>Bienvenue chez nous !</h1>
           <br/>
           <h2>Connectez-vous</h2>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text" 
-              placeholder="Entrez votre prénom"
-              required
-              value={inputValue}
-              onChange={handleChange}/>
-            <button>Accédez à votre espace</button>
-          </form>
-        </div>)
+          <input
+            type="text" 
+            placeholder="Entrez votre prénom"
+            required
+            value={inputValue}
+            onChange={handleChange}/>
+          <button>Accédez à votre espace</button>
+        </form>)
 }

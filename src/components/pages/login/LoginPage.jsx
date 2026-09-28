@@ -1,5 +1,5 @@
-import LoginForm from "./login/LoginForm"
-import Logo from "./Logo"
+import LoginForm from "./LoginForm"
+import Logo from "../Logo"
 
 export default function LoginPage(){
     return(
