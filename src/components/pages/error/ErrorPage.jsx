@@ -1,18 +1,18 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
 
-export default function OrderPage() {
+export default function ErrorPage() {
   const navigate = useNavigate()
 
-  const handleClick = () => {
+  const clickHandle = () => {
     navigate("/")
   }
 
   return (
     <div>
-      <h1>Bonjour</h1>
+      <h1>ErrorPage</h1>
       <br/>
-      <button onClick={handleClick}>Déconnexion</button>
+      <button onClick={clickHandle}>Retourner à la page d'accueil</button>
     </div>
   )
 }
