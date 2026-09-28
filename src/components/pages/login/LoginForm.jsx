@@ -10,7 +10,7 @@ export default function LoginForm() {
     const handleSubmit = (event) =>{
       event.preventDefault()
       setInputValue("")
-      navigate("/order")
+      navigate(`order/${inputValue}`)
     }
   
     const handleChange = (event) =>{
@@ -30,6 +30,5 @@ export default function LoginForm() {
           value={inputValue}
           onChange={handleChange}/>
         <button>Accédez à votre espace</button>
-        <Link to="/order">ICI</Link>
-      </form>)
+       </form>)
 }

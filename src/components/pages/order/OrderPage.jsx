@@ -1,10 +1,12 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router'
+import { Link, useNavigate, useParams } from 'react-router'
 
 export default function OrderPage() {
+  const {username} = useParams()
+
   return (
     <div>
-      <h1>Bonjour</h1>
+      <h1>Bonjour {username}</h1>
       <br/>
       <Link to="/">
         <button>Déconnexion</button>
