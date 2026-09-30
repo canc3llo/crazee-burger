@@ -2,6 +2,8 @@ import { useState } from "react"
 import { useNavigate, Link } from "react-router"
 import { theme } from "../../../theme/index.js"
 import styled from "styled-components"
+import { BsPersonCircle } from "react-icons/bs";
+import { IoChevronForward } from "react-icons/io5";
 
 export default function LoginForm() {
     //state ((data) (variables))
@@ -25,28 +27,36 @@ export default function LoginForm() {
         <h1>Bienvenue chez nous !</h1>
         <hr/>
         <h2>Connectez-vous</h2>
-        <input
-          type="text" 
-          placeholder="Entrez votre prénom"
-          required
-          value={inputValue}
-          onChange={handleChange}/>
-        <button>Accéder à mon espace</button>
+        <div className="input-container">
+					<BsPersonCircle className="icon"/> 
+					<input
+						type="text" 
+						placeholder="Entrez votre prénom"
+						required
+						value={inputValue}
+						onChange={handleChange}/>
+				</div>
+        <button>
+					<span>Accéder à mon espace</span>
+					<IoChevronForward className="icon"/>
+				</button>
        </LoginFormStyled>)
 }
 
 const LoginFormStyled = styled.form`
-	border : 1px solid red;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
+	margin: 0 auto;
+	padding: 2.5rem 2rem;
 
 	font-family: Amatic SC, cursive;
-	color: ${theme.colors.white};
 
 	h1{
 		font-size: ${theme.fonts.P5};
+		color: ${theme.colors.white};
 	}
 
 	hr{
@@ -60,13 +70,32 @@ const LoginFormStyled = styled.form`
 	h2{
 		font-size: ${theme.fonts.P4};
 		margin: 40px 0px 18px 0px;
+		color: ${theme.colors.white};
 	}
 
-	input{
+	.input-container{
 		width: 400px;
 		height: 55px;
 		margin: 0px 32px 18px 32px;
+		border-radius: 6px;
+		background-color: ${theme.colors.white};
+		display: flex;
+		align-items: center;
+
+		.icon{
+			color : ${theme.colors.greySemiDark};
+			margin-left: 25px;
+		}
+
+		input{
 		font-family: Arial, sans-serif;
+		font-size: ${theme.fonts.P0};
+		color: ${theme.colors.gr};
+		margin-left: 8px;
+		border: none ;
+		width: 100%;
+		margin-right: 25px;
+		}
 	}
 
 	button{
@@ -74,11 +103,19 @@ const LoginFormStyled = styled.form`
 		height: 53px;
 		background-color: ${theme.colors.primary_burger};
 		font-family: Arial, sans-serif;
-		font-style: bold;
+		font-weight: 900;
 		font-size: ${theme.fonts.P0};
 		border-radius: 6px;
 		border : 1px solid ${theme.colors.primary_burger};
 		color: ${theme.colors.white};
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		.icon{
+			margin-left: 10px;
+			margin-top: 1px;
+		}
 	}
 
 	button:hover{
