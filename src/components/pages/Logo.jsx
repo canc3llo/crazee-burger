@@ -1,12 +1,13 @@
 import styled from "styled-components"
 import logo from "../../assets/logo-orange.png"
+import {theme} from "../../theme/index.js"
 
 export default function Logo(){
     return(
         <LogoStyled>
-            <h1>Crazee</h1>
+            <h1>CRAZEE</h1>
             <img src={logo} alt="Logo" />
-            <h1>Burger</h1>
+            <h1>BURGER</h1>
         </LogoStyled>)
 }
 
@@ -20,7 +21,15 @@ const LogoStyled = styled.div`
 	align-items: center;
 
 	img{
-		padding: 0 20px;
+		margin: 0 20px;
 		height: 150px;
+		border : 1px solid yellow;
+	}
+
+	h1{
+		font-family: Amatic SC, cursive;
+		font-size: 8rem;
+		color: ${theme.colors.primary};
+		margin: 0;
 	}
 `
