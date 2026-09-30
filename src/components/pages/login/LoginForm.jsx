@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate, Link } from "react-router"
+import styled from "styled-components"
 
 export default function LoginForm() {
     //state ((data) (variables))
@@ -19,7 +20,7 @@ export default function LoginForm() {
   
     //render
     return( 
-      <form onSubmit={handleSubmit}>
+      <LoginFormStyled onSubmit={handleSubmit}>
         <h1>Bienvenue chez nous !</h1>
         <br/>
         <h2>Connectez-vous</h2>
@@ -29,6 +30,14 @@ export default function LoginForm() {
           required
           value={inputValue}
           onChange={handleChange}/>
-        <button>Accédez à votre espace</button>
-       </form>)
+        <button>Accéder à mon espace</button>
+       </LoginFormStyled>)
 }
+
+const LoginFormStyled = styled.form`
+	border : 1px solid red;
+
+	h1, h2{
+		color: white;
+	}
+`
