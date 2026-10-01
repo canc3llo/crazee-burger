@@ -1,5 +1,4 @@
-import React from 'react'
-import { Link, useNavigate, useParams } from 'react-router'
+import { Link, useParams } from 'react-router'
 
 export default function OrderPage() {
   const {username} = useParams()

@@ -1,5 +1,6 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
+import checker from 'vite-plugin-checker'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -9,5 +10,14 @@ export default defineConfig({
       usePolling: true,
     },
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+    checker({
+      // affiche les erreurs ESLint dans un overlay du browser
+      eslint: {
+        lintCommand: 'eslint "./src/**/*.{js,jsx}"',
+        useFlatConfig: true,
+      },
+    }),
+  ],
 })
