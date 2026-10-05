@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
 import TextInput from "../../reusable-ui/TextInput.jsx"
-import PrimaryButton from "./PrimaryButton.jsx"
+import PrimaryButton from "../../reusable-ui/PrimaryButton.jsx"
 
 export default function LoginForm() {
     //state ((data) (variables))
@@ -33,10 +33,12 @@ export default function LoginForm() {
 					value={inputValue} 
 					onChange={handleChange} 
 					Icon={<BsPersonCircle className="icon" />} 
-					placeholder="Entrez votre prénom" required />
+					placeholder="Entrez votre prénom" required 
+				/>
         <PrimaryButton 
 					label="Accéder à mon espace" 
-					icon={<IoChevronForward className="icon" />}/>
+					Icon={<IoChevronForward className="icon-button" />}
+				/>
       </LoginFormStyled>)
 }
 
@@ -69,4 +71,11 @@ const LoginFormStyled = styled.form`
 		margin: 40px 0px 18px 0px;
 		color: ${theme.colors.white};
 	}
+
+	.icon-button{
+		margin-left: 10px;
+		margin-top: 1px;
+	}
+	
+		
 `
