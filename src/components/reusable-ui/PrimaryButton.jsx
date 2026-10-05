@@ -17,7 +17,7 @@ const PrimaryButtonStyled = styled.button`
 	font-family: Arial, sans-serif;
 	font-weight: 900;
 	font-size: ${theme.fonts.P0};
-	border-radius: 6px;
+	border-radius: ${theme.borderRadius.round};
 	border : 1px solid ${theme.colors.primary_burger};
 	color: ${theme.colors.white};
 	display: flex;

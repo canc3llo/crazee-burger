@@ -19,12 +19,13 @@ const TextInputStyled = styled.div`
 	width: 400px;
 	height: 55px;
 	margin: 0px 32px 18px 32px;
-	border-radius: 6px;
+	border-radius: ${theme.borderRadius.round};
 	background-color: ${theme.colors.white};
 	display: flex;
 	align-items: center;
 
 	.icon{
+		font-size: ${theme.fonts.P0};
 		color : ${theme.colors.greySemiDark};
 		margin-left: 25px;
 	}
@@ -37,5 +38,10 @@ const TextInputStyled = styled.div`
 	border: none ;
 	width: 100%;
 	margin-right: 25px;
+
+		&::placeholder{
+			color : ${theme.colors.greySemiDark};
+			background-color: ${theme.colors.white};
+		}
 	}
 `
