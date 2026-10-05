@@ -1,4 +1,4 @@
-import styled from "styled-components"
+ import styled from "styled-components"
 import logo from "../../assets/img/logo-orange.png"
 import {theme} from "../../theme/index.js"
 
