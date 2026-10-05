@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { theme } from "../../../theme/index.js"
+import { theme } from "../../theme/index.js"
 
 export default function PrimaryButton({ label, Icon }) {
 	return (
@@ -23,11 +23,6 @@ const PrimaryButtonStyled = styled.button`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
-	.icon{
-		margin-left: 10px;
-		margin-top: 1px;
-	}
 
 	&:hover{
 		background-color: ${theme.colors.white};
