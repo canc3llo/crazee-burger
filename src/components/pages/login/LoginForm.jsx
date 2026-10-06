@@ -49,13 +49,14 @@ const LoginFormStyled = styled.form`
 	align-items: center;
 	text-align: center;
 	margin: 0 auto;
-	padding: 2.5rem 2rem;
+	padding: 2.5rem 2rem; //padding -
 
 	font-family: Amatic SC, cursive;
 
 	h1{
 		font-size: ${theme.fonts.P5};
 		color: ${theme.colors.white};
+		// margin +
 	}
 
 	hr{

@@ -12,13 +12,11 @@ export default function Logo(){
 }
 
 const LogoStyled = styled.div`
+	border : 1px solid blue;
 	margin: 0;
-	transform: scale(2.5);
-
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 10px;
 
 	h1{
 		font-family: Amatic SC, cursive;
