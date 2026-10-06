@@ -11,7 +11,9 @@ export default function Main() {
 
 const MainStyled = styled.div`
 	flex: 1;
-	background-color: grey;
+	background-color: ${theme.colors.background_white};
 	width: 100%;
-	border-radius: 0 0  ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
+	border-bottom-left-radius: ${theme.borderRadius.extraRound};
+	border-bottom-right-radius: ${theme.borderRadius.extraRound};
+	box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset ;
 `

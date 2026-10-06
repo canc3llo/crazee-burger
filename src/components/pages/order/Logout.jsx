@@ -1,11 +1,9 @@
-import { Link, useParams } from 'react-router'
+import { Link } from 'react-router'
 import styled from 'styled-components'
 import { theme } from '../../../theme/index.js'
 import { BsPersonCircle } from 'react-icons/bs'
 
-export default function Logout() {
-	const {username} = useParams()
-
+export default function Logout({ username }) {
 	return (
 		<LogoutStyled>
 			<div className="info">
@@ -26,11 +24,10 @@ const LogoutStyled = styled.div`
 	align-items: center;
 	flex-direction: row;
 	gap: 10px;
+	min-width: 100px;
 
 	.info{
-		display: flex;
-		align-items: end;
-		flex-direction: column;
+		text-align: right;
 	}
 
 	h1{
@@ -48,7 +45,7 @@ const LogoutStyled = styled.div`
 	button{
 		background-color: ${theme.colors.white};
 		border: none;
-		color : ${theme.colors.greyDark};
+		color : ${theme.colors.greyBlue};
 		font-size: ${theme.fonts.XXS};
 		margin: 0;
 		padding: 0;

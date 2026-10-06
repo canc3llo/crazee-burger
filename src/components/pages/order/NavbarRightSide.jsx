@@ -2,11 +2,11 @@ import Logout from "./Logout.jsx"
 import styled from "styled-components"
 import AdminButton from "./AdminButton.jsx"
 
-export default function NavbarRightSide() {
+export default function NavbarRightSide({ username }) {
 	return (
 		<NavbarRightSideStyled>
 			<AdminButton/>
-			<Logout/>
+			<Logout username={username}/>
 		</NavbarRightSideStyled>
 	)
 }

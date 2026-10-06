@@ -3,11 +3,11 @@ import { theme } from "../../../theme/index.js"
 import Logo from "../../reusable-ui/Logo.jsx"
 import NavbarRightSide from "./NavbarRightSide.jsx"
 
-export default function Navbar() {
+export default function Navbar({ username }) {
 	return (
 		<NavbarStyled>
 			<Logo/>
-			<NavbarRightSide/>
+			<NavbarRightSide username={username}/>
 		</NavbarStyled>
 	)
 }
@@ -22,6 +22,7 @@ const NavbarStyled = styled.nav`
 	align-items: center;
 	justify-content: space-between;
 	margin: 0;
-	border-radius: ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound} 0 0;
+	border-top-left-radius: ${theme.borderRadius.extraRound};
+	border-top-right-radius: ${theme.borderRadius.extraRound};
 	background-color: ${theme.colors.white};
 `
