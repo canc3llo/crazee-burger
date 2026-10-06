@@ -6,7 +6,7 @@ import burgerBackground from "../../../assets/img/burger-background.jpg"
 export default function LoginPage(){
     return(
         <LoginPageStyled>
-            <Logo/>
+            <Logo className={"logo-login-page"}/>
             <LoginForm/>
         </LoginPageStyled>
     )
@@ -27,4 +27,8 @@ const LoginPageStyled = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+
+	.logo-login-page{
+		transform: scale(2.5);
+	}
 `

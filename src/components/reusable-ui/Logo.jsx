@@ -2,9 +2,9 @@
 import logo from "../../assets/img/logo-orange.png"
 import {theme} from "../../theme/index.js"
 
-export default function Logo(){
+export default function Logo({className}) {
     return(
-        <LogoStyled>
+        <LogoStyled className={className}>
             <h1>CRAZEE</h1>
             <img src={logo} alt="Logo" />
             <h1>BURGER</h1>
@@ -23,7 +23,7 @@ const LogoStyled = styled.div`
 		color: ${theme.colors.primary};
 		font-weight: ${theme.weights.bold};
 		letter-spacing: 1.5px;
-		margin: 0;
+		margin: 0; 
 	}
 
 	img{

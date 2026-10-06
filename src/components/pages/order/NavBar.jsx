@@ -1,13 +1,13 @@
 import styled from "styled-components"
 import { theme } from "../../../theme/index.js"
-import Logout from "./Logout.jsx"
 import Logo from "../../reusable-ui/Logo.jsx"
+import NavbarRightSide from "./NavbarRightSide.jsx"
 
 export default function Navbar() {
 	return (
 		<NavbarStyled>
 			<Logo/>
-			<Logout/>
+			<NavbarRightSide/>
 		</NavbarStyled>
 	)
 }
