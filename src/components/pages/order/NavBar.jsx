@@ -3,16 +3,16 @@ import { theme } from "../../../theme/index.js"
 import Logout from "./Logout.jsx"
 import Logo from "../../reusable-ui/Logo.jsx"
 
-export default function NavBar() {
+export default function Navbar() {
 	return (
-		<NavBarStyled>
+		<NavbarStyled>
 			<Logo/>
 			<Logout/>
-		</NavBarStyled>
+		</NavbarStyled>
 	)
 }
 
-const NavBarStyled = styled.div`
+const NavbarStyled = styled.nav`
 	box-sizing: border-box;
 	padding-left: 20px;
 	padding-right: 70px;
