@@ -3,27 +3,25 @@ import styled from 'styled-components'
 import { theme } from '../../../theme/index.js'
 import { BsPersonCircle } from 'react-icons/bs'
 
-
-
 export default function Logout() {
 	const {username} = useParams()
 
 	return (
-		<NavBarStyled>
-		<div className="left">
-				<h1>
-					Hey, <span className="username">{username}</span>
-				</h1>
-				<Link to="/">
-					<button>Se déconnecter</button>
-				</Link>
-		</div>
-		<BsPersonCircle className="icon" />
-		</NavBarStyled>
+		<LogoutStyled>
+			<div className="left">
+					<h1>
+						Hey, <span className="username">{username}</span>
+					</h1>
+					<Link to="/">
+						<button>Se déconnecter</button>
+					</Link>
+			</div>
+			<BsPersonCircle className="icon" />
+		</LogoutStyled>
 	)
 }
 
-const NavBarStyled = styled.div`
+const LogoutStyled = styled.div`
 	display: flex;
 	align-items: center;
 	flex-direction: row;
