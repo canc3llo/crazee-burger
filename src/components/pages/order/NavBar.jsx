@@ -15,6 +15,7 @@ export default function NavBar() {
 const NavBarStyled = styled.div`
 	box-sizing: border-box;
 	padding-left: 20px;
+	padding-right: 70px;
 	width: 100%;
 	height: 10%;
 	display: flex;
