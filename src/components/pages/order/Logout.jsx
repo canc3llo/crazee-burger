@@ -8,9 +8,9 @@ export default function Logout() {
 
 	return (
 		<LogoutStyled>
-			<div className="left">
+			<div className="info">
 					<h1>
-						Hey, <span className="username">{username}</span>
+						Hey, <span>{username}</span>
 					</h1>
 					<Link to="/">
 						<button>Se déconnecter</button>
@@ -27,7 +27,7 @@ const LogoutStyled = styled.div`
 	flex-direction: row;
 	gap: 10px;
 
-	.left{
+	.info{
 		display: flex;
 		align-items: end;
 		flex-direction: column;
@@ -35,15 +35,14 @@ const LogoutStyled = styled.div`
 
 	h1{
 		color : ${theme.colors.greyDark};
-		font-family: Open Sans, sans-serif;
 		font-size: ${theme.fonts.P0};
 		font-weight: ${theme.weights.regular};
 		margin: 2px 0;
-	}
 
-	.username{
+		span{
 		color: ${theme.colors.primary};
 		font-weight: ${theme.weights.medium};
+		}
 	}
 
 	button{
@@ -53,6 +52,11 @@ const LogoutStyled = styled.div`
 		font-size: ${theme.fonts.XXS};
 		margin: 0;
 		padding: 0;
+
+		&:hover{
+			text-decoration: underline;
+			cursor: pointer;
+		}
 	}
 
 	.icon{
