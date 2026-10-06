@@ -50,7 +50,6 @@ const LoginFormStyled = styled.form`
 	text-align: center;
 	margin: 0 auto;
 	padding: 2.5rem 2rem; //padding -
-
 	font-family: Amatic SC, cursive;
 
 	h1{
