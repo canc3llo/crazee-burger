@@ -23,22 +23,21 @@ const ProduitStyled = styled.div`
 	align-items: center;
 	flex-direction: column;
 	max-width: 240px;
-	padding: 50px 20px 135px 20px;
+	padding: 50px 20px 10px 20px;
 	box-sizing: border-box;
 
 	.img-produit{
-    flex: 1;               /* prend la hauteur restante */
-    min-height: 145px;         /* permet à l'image de rétrécir */
-    align-self: stretch;   /* prend toute la largeur à l'intérieur du padding */
+    height: 100%;
+		width: 100%;
+    align-self: stretch;
     border: 1px solid red;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 
     img {
-      width: 70%;
-      height: 70%;
-      object-fit: contain; /* garde les proportions */
+      width: 75%;
+      object-fit: contain;
     }
   }
 `
