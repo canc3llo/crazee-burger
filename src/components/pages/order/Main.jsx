@@ -5,16 +5,16 @@ import Produit from "./Produit.jsx"
 export default function Main() {
 	return (
 		<MainStyled>
-			<Produit/>
-			<Produit/>
-			<Produit/>
-			<Produit/>
-			<Produit/>
-			<Produit/>
-			<Produit/>
-			<Produit/>
-			<Produit/>
-			<Produit/>
+			<Produit image={"../../src/assets/img/burger1.png"} titre={"Burger"} prix={"5,60"}/>
+			<Produit image={"../../src/assets/img/burger1.png"} titre={"Burger"} prix={"5,60"}/>
+			<Produit image={"../../src/assets/img/burger1.png"} titre={"Burger"} prix={"5,60"}/>
+			<Produit image={"../../src/assets/img/burger1.png"} titre={"Burger"} prix={"5,60"}/>
+			<Produit image={"../../src/assets/img/burger1.png"} titre={"Burger"} prix={"5,60"}/>
+			<Produit image={"../../src/assets/img/burger1.png"} titre={"Burger"} prix={"5,60"}/>
+			<Produit image={"../../src/assets/img/burger1.png"} titre={"Burger"} prix={"5,60"}/>
+			<Produit image={"../../src/assets/img/burger1.png"} titre={"Burger"} prix={"5,60"}/>
+			<Produit image={"../../src/assets/img/burger1.png"} titre={"Burger"} prix={"5,60"}/>
+			<Produit image={"../../src/assets/img/burger1.png"} titre={"Burger"} prix={"5,60"}/>
 		</MainStyled>
 	)
 }
