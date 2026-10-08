@@ -11,7 +11,7 @@ export default function PrimaryButton({ label, Icon }) {
 }
 
 const PrimaryButtonStyled = styled.button`
-	width: 400px;
+	width: 100%;
 	height: 53px;
 	background-color: ${theme.colors.primary_burger};
 	font-family: Arial, sans-serif;

@@ -8,9 +8,13 @@ export default function Produit() {
 			<div className="img-produit">
 				<img src="../../../src/assets/img/burger1.png"/>
 			</div>
-			<h1>titre</h1>
-			<h2>$</h2>
-			<PrimaryButton/>
+			<div className="info-produit">
+				<h1>titre</h1>
+				<div className="prix-button">
+					<h2>$</h2>
+					<PrimaryButton/>
+				</div>
+			</div>
 		</ProduitStyled>
 	)
 }
@@ -25,11 +29,11 @@ const ProduitStyled = styled.div`
 	max-width: 240px;
 	padding: 50px 20px 10px 20px;
 	box-sizing: border-box;
+	gap: 15px;
 
 	.img-produit{
     height: 100%;
 		width: 100%;
-    align-self: stretch;
     border: 1px solid red;
 		display: flex;
 		align-items: center;
@@ -40,4 +44,21 @@ const ProduitStyled = styled.div`
       object-fit: contain;
     }
   }
+
+	.info-produit{
+		height: 100%;
+		width: 100%;
+		border: 1px solid red;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.prix-button{
+		display: flex;
+		align-items: center;
+		border: 1px solid gray;
+		width: 100%;
+		gap: 10px;
+	}
 `
