@@ -11,8 +11,8 @@ export default function Produit() {
 			<div className="info-produit">
 				<h1>titre</h1>
 				<div className="prix-button">
-					<h2>$</h2>
-					<PrimaryButton/>
+					<h2>5,60 $</h2>
+					<PrimaryButton className={"btn-ajouter"} label={"Ajouter"}/>
 				</div>
 			</div>
 		</ProduitStyled>
@@ -38,9 +38,10 @@ const ProduitStyled = styled.div`
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		box-sizing: border-box;
 
     img {
-      width: 75%;
+      width: 90%;
       object-fit: contain;
     }
   }
@@ -51,14 +52,40 @@ const ProduitStyled = styled.div`
 		border: 1px solid red;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-	}
+		padding: 0 5px 5px 5px;
+		box-sizing: border-box;
 
-	.prix-button{
+		h1{
+			border: 1px solid blue;
+			margin: 0;
+			text-align: left;
+			font-family: Amatic SC, cursive;
+			font-weight: ${theme.weights.bold};
+			font-style: bold;
+			font-size: ${theme.fonts.P4};
+		}
+
+		.prix-button{
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 		border: 1px solid gray;
+		box-sizing: border-box;
 		width: 100%;
-		gap: 10px;
+		height: 100%;
+
+		h2{
+			font-weight: 300;
+			font-size: 16px;
+			color: ${theme.colors.primary};
+		}
+
+		.btn-ajouter{
+			width: 95px;
+			height: 38px;
+		}
 	}
+	}
+
+	
 `
