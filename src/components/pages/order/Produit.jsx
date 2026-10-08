@@ -56,7 +56,6 @@ const ProduitStyled = styled.div`
 		box-sizing: border-box;
 
 		h1{
-			border: 1px solid blue;
 			margin: 0;
 			text-align: left;
 			font-family: Amatic SC, cursive;
