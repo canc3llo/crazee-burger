@@ -16,7 +16,7 @@ export default function TextInput({ value, onChange, Icon, ...extraProps }) {
 }
 
 const TextInputStyled = styled.div`
-	width: 400px;
+	width: 100%;
 	height: 55px;
 	margin: 0px 32px 18px 32px;
 	border-radius: ${theme.borderRadius.round};
