@@ -2,16 +2,16 @@ import styled from "styled-components"
 import { theme } from "../../../theme/index.js"
 import PrimaryButton from "../../reusable-ui/PrimaryButton.jsx"
 
-export default function Produit({image, titre, prix}) {
+export default function Produit({imageSrc, title, price}) {
 	return (
 		<ProduitStyled>
 			<div className="img-produit">
-				<img src={image}/>
+				<img src={imageSrc}/>
 			</div>
 			<div className="info-produit">
-				<h1>{titre}</h1>
+				<h1>{title}</h1>
 				<div className="prix-button">
-					<h2>{prix}</h2>
+					<h2>{price} €</h2>
 					<PrimaryButton className={"btn-ajouter"} label={"Ajouter"}/>
 				</div>
 			</div>
