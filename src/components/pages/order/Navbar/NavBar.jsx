@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { theme } from "../../../theme/index.js"
-import Logo from "../../reusable-ui/Logo.jsx"
+import { theme } from "../../../../theme/index.js"
+import Logo from "../../../reusable-ui/Logo.jsx"
 import NavbarRightSide from "./NavbarRightSide.jsx"
-import { refreshPage } from "../../../utils/window.jsx"
+import { refreshPage } from "../../../../utils/window.js"
 
 export default function Navbar({ username }) {
 	return (
@@ -26,6 +26,8 @@ const NavbarStyled = styled.nav`
 	border-top-left-radius: ${theme.borderRadius.extraRound};
 	border-top-right-radius: ${theme.borderRadius.extraRound};
 	background-color: ${theme.colors.white};
+	border-bottom: 1px solid ${theme.colors.greyLight};
+	box-sizing: border-box;
 
 	.logo-order-page{
 		cursor: pointer;

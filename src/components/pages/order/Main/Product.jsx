@@ -1,55 +1,58 @@
 import styled from "styled-components"
-import { theme } from "../../../theme/index.js"
-import PrimaryButton from "../../reusable-ui/PrimaryButton.jsx"
+import { theme } from "../../../../theme/index.js"
+import PrimaryButton from "../../../reusable-ui/PrimaryButton.jsx"
+import { formatPrice } from "../../../../../src/utils/maths.js"
 
-export default function Produit({imageSrc, title, price}) {
+export default function Product({imageSrc, title, price}) {
 	return (
-		<ProduitStyled>
-			<div className="img-produit">
-				<img src={imageSrc}/>
+		<ProductStyled>
+			<div className="img-container">
+				<img src={imageSrc} alt={title}/>
 			</div>
-			<div className="info-produit">
+			<div className="description">
 				<h1>{title}</h1>
 				<div className="prix-button">
-					<h2>{price} €</h2>
+					<h2>{formatPrice(price)}</h2>
 					<PrimaryButton className={"btn-ajouter"} label={"Ajouter"}/>
 				</div>
 			</div>
-		</ProduitStyled>
+		</ProductStyled>
 	)
 }
 
-const ProduitStyled = styled.div`
+const ProductStyled = styled.div`
 	background-color: ${theme.colors.white};
 	border-radius: ${theme.borderRadius.extraRound};
 	box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	max-width: 240px;
+	width: 240px;
 	padding: 50px 20px 10px 20px;
 	box-sizing: border-box;
 	gap: 15px;
 
-	.img-produit{
-    height: 100%;
+	.img-container{
+		flex: 1;
+		min-height: 0;
 		width: 100%;
-    border: 1px solid red;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		position: relative;
 		box-sizing: border-box;
 
     img {
-      width: 90%;
+			position: absolute; /* l'image ne fait plus grandir le conteneur */
+    	inset: 0;
+      height: 100%;
+			width: 100%;
       object-fit: contain;
+			margin: auto;
+			box-sizing: border-box;
     }
   }
 
-	.info-produit{
-		height: 100%;
+	.description{
+		flex: 0 0 auto;
 		width: 100%;
-		border: 1px solid red;
 		display: flex;
 		flex-direction: column;
 		padding: 0 5px 5px 5px;
@@ -68,10 +71,8 @@ const ProduitStyled = styled.div`
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		border: 1px solid gray;
 		box-sizing: border-box;
-		width: 100%;
-		height: 100%;
+  	width: 100%;
 
 		h2{
 			font-weight: 300;
@@ -85,6 +86,4 @@ const ProduitStyled = styled.div`
 		}
 	}
 	}
-
-	
 `

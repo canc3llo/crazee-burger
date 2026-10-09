@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 import styled from 'styled-components'
-import { theme } from '../../../theme/index.js'
+import { theme } from '../../../../theme/index.js'
 import { BsPersonCircle } from 'react-icons/bs'
 
 export default function Logout({ username }) {
