@@ -25,4 +25,5 @@ const MainStyled = styled.div`
 
 	display: grid;
 	grid-template-columns: 1fr;
+	border-bottom: solid 0.1px ${theme.colors.greyLight};
 `

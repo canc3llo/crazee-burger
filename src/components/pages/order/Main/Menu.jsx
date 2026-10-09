@@ -4,7 +4,7 @@ import { useState } from "react"
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu.js"
 
 export default function Menu() {
-	const [menu, setMenu] = useState(fakeMenu2)
+	const [menu] = useState(fakeMenu2)
 
 	return (
 		<MenuStyled>

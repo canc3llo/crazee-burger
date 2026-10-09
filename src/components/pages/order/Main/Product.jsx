@@ -28,7 +28,7 @@ const ProductStyled = styled.div`
 	align-items: center;
 	flex-direction: column;
 	width: 240px;
-	padding: 50px 20px 10px 20px;
+	padding: 50px 20px 20px 20px;
 	box-sizing: border-box;
 	gap: 15px;
 
@@ -56,6 +56,7 @@ const ProductStyled = styled.div`
 		display: flex;
 		flex-direction: column;
 		padding: 0 5px 5px 5px;
+		gap: 5px;
 		box-sizing: border-box;
 
 		h1{
@@ -83,6 +84,7 @@ const ProductStyled = styled.div`
 		.btn-ajouter{
 			width: 95px;
 			height: 38px;
+			font-size: ${theme.fonts.XS};
 		}
 	}
 	}
