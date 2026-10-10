@@ -1,15 +1,21 @@
 import styled from "styled-components"
-import Produit from "./Product.jsx"
+import Card from "../../../reusable-ui/Card.jsx"
 import { useState } from "react"
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu.js"
+import { formatPrice } from "../../../../utils/maths.js"
 
 export default function Menu() {
 	const [menu] = useState(fakeMenu2)
 
 	return (
 		<MenuStyled>
-			{menu.map((produit) => {
-				return <Produit imageSrc={produit.imageSource} title={produit.title} price={produit.price}/>
+			{menu.map(({id, imageSource, title, price}) => {
+				return <Card
+									key={id} 
+									imageSrc={imageSource} 
+									title={title} 
+									leftDescription={formatPrice(price)}
+								/>
 			})}
 		</MenuStyled>
 	)

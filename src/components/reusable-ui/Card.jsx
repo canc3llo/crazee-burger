@@ -1,26 +1,25 @@
 import styled from "styled-components"
-import { theme } from "../../../../theme/index.js"
-import PrimaryButton from "../../../reusable-ui/PrimaryButton.jsx"
-import { formatPrice } from "../../../../../src/utils/maths.js"
+import { theme } from "../../theme/index.js"
+import PrimaryButton from "./PrimaryButton.jsx"
 
-export default function Product({imageSrc, title, price}) {
+export default function Card({imageSrc, title, leftDescription}) {
 	return (
-		<ProductStyled>
+		<CardStyled>
 			<div className="img-container">
 				<img src={imageSrc} alt={title}/>
 			</div>
 			<div className="description">
 				<h1>{title}</h1>
-				<div className="prix-button">
-					<h2>{formatPrice(price)}</h2>
+				<div className="bottom-description">
+					<h2>{leftDescription}</h2>
 					<PrimaryButton className={"btn-ajouter"} label={"Ajouter"}/>
 				</div>
 			</div>
-		</ProductStyled>
+		</CardStyled>
 	)
 }
 
-const ProductStyled = styled.div`
+const CardStyled = styled.div`
 	background-color: ${theme.colors.white};
 	border-radius: ${theme.borderRadius.extraRound};
 	box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
@@ -68,24 +67,24 @@ const ProductStyled = styled.div`
 			font-size: ${theme.fonts.P4};
 		}
 
-		.prix-button{
+		.bottom-description{
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		box-sizing: border-box;
   	width: 100%;
 
-		h2{
-			font-weight: 300;
-			font-size: 16px;
-			color: ${theme.colors.primary};
-		}
+			h2{
+				font-weight: 300;
+				font-size: 16px;
+				color: ${theme.colors.primary};
+			}
 
-		.btn-ajouter{
-			width: 95px;
-			height: 38px;
-			font-size: ${theme.fonts.XS};
+			.btn-ajouter{
+				width: 95px;
+				height: 38px;
+				font-size: ${theme.fonts.XS};
+			}
 		}
-	}
 	}
 `
