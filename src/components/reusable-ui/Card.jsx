@@ -65,6 +65,9 @@ const CardStyled = styled.div`
 			font-weight: ${theme.weights.bold};
 			font-style: bold;
 			font-size: ${theme.fonts.P4};
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 
 		.bottom-description{
