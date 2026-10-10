@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import { theme } from "../../theme/index.js"
 
-export default function PrimaryButton({ label, Icon }) {
+export default function PrimaryButton({ className, label, Icon }) {
 	return (
-		<PrimaryButtonStyled>
+		<PrimaryButtonStyled className={className}>
 			<span>{label}</span>
 			{Icon && Icon}
 		</PrimaryButtonStyled>
@@ -11,7 +11,7 @@ export default function PrimaryButton({ label, Icon }) {
 }
 
 const PrimaryButtonStyled = styled.button`
-	width: 400px;
+	width: 100%;
 	height: 53px;
 	background-color: ${theme.colors.primary_burger};
 	font-family: Arial, sans-serif;

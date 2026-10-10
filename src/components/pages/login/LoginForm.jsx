@@ -49,13 +49,16 @@ const LoginFormStyled = styled.form`
 	align-items: center;
 	text-align: center;
 	margin: 0 auto;
-	padding: 2.5rem 2rem; //padding -
+	padding: 2rem 3rem; //padding en px
 	font-family: Amatic SC, cursive;
+	width: 33%;
+	min-width: 420px;
+	max-width: 500px;
+	box-sizing: border-box;
 
 	h1{
 		font-size: ${theme.fonts.P5};
 		color: ${theme.colors.white};
-		// margin +
 	}
 
 	hr{
