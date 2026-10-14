@@ -25,14 +25,14 @@ const TextInputStyled = styled.div`
 	align-items: center;
 
 	.icon{
-		font-size: ${theme.fonts.P0};
+		font-size: ${theme.fonts.SM};
 		color : ${theme.colors.greySemiDark};
 		margin-left: 25px;
 	}
 
 	input{
 	font-family: Arial, sans-serif;
-	font-size: ${theme.fonts.P0};
+	font-size: ${theme.fonts.SM};
 	color: ${theme.colors.gr};
 	margin-left: 8px;
 	border: none ;

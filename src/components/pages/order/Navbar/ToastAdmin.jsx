@@ -4,7 +4,7 @@ import { theme } from "../../../../theme/index.js";
 
 export default function ToastAdmin() {
 	return (
-		<ToastContainer className="toaster" bodyClassName="body-toast"/>
+		<ToastContainerStyled className="toaster" bodyClassName="body-toast"/>
 	)
 }
 

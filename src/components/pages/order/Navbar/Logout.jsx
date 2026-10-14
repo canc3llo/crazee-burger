@@ -32,7 +32,7 @@ const LogoutStyled = styled.div`
 
 	h1{
 		color : ${theme.colors.greyDark};
-		font-size: ${theme.fonts.P0};
+		font-size: ${theme.fonts.SM};
 		font-weight: ${theme.weights.regular};
 		margin: 2px 0;
 

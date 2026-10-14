@@ -16,7 +16,7 @@ const PrimaryButtonStyled = styled.button`
 	background-color: ${theme.colors.primary_burger};
 	font-family: Arial, sans-serif;
 	font-weight: 900;
-	font-size: ${theme.fonts.P0};
+	font-size: ${theme.fonts.SM};
 	border-radius: ${theme.borderRadius.round};
 	border : 1px solid ${theme.colors.primary_burger};
 	color: ${theme.colors.white};
