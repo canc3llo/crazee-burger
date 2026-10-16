@@ -2,17 +2,20 @@ import styled from "styled-components"
 import Menu from "./Menu.jsx"
 // import Basket from "./Basket.jsx"
 import { theme } from "../../../../theme/index.js"
+import Admin from "./Admin.jsx"
 
 export default function Main() {
 	return (
 		<MainStyled>
 			{/* <Basket/> */}
 			<Menu/>
+			<Admin/>
 		</MainStyled>
 	)
 }
 
 const MainStyled = styled.div`
+	position: relative;
 	flex: 1;
 	background-color: ${theme.colors.background_white};
 	width: 100%;
