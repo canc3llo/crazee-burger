@@ -18,7 +18,6 @@ export default function AdminTabs() {
 const AdminTabsStyled = styled.div`
 	display: flex;
 	align-items: flex-end;
-	border : 1px solid purple;
 	height: 44px;
 	padding: 0 71px;
 	box-sizing: border-box;

@@ -5,7 +5,7 @@ export default function Tab({ className, label, Icon }) {
 	return (
 		<TabStyled className={className}>
 			{Icon && Icon}
-			<span>{label}</span>
+			{label && <span>{label}</span>}
 		</TabStyled>
 	)
 }
@@ -18,7 +18,14 @@ const TabStyled = styled.div`
 	border-top-right-radius: ${theme.borderRadius.round};
 	border : 1px solid ${theme.colors.greyLight};	
 	box-sizing: border-box;
-	padding: 13px 22px 14px 22px;
+	padding: 0 22px;
 	font-weight: 400;
 	font-size: 16px;
+	display: flex;
+	align-items: center;
+
+	span{
+		margin-top: 3px;
+		margin-left: 12px;
+	}
 `

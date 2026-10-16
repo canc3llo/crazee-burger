@@ -3,16 +3,19 @@ import Menu from "./Menu.jsx"
 // import Basket from "./Basket.jsx"
 import { theme } from "../../../../theme/index.js"
 import Admin from "./Admin/Admin.jsx"
-
+import OrderContext from "../../../../context/OrderContext.jsx"
+import { useContext } from "react"
 
 export default function Main() {
+	const {isModeAdmin, setIsModeAdmin} = useContext(OrderContext)
+
 	return (
 		<MainStyled>
 			{/* <Basket/> */}
-			<div className="scrollable">
+			<div className="menu-and-admin">
 				<Menu/>
+				{isModeAdmin && <Admin/>}
 			</div>
-			<Admin/>
 		</MainStyled>
 	)
 }
@@ -28,12 +31,21 @@ const MainStyled = styled.div`
   box-sizing: border-box;
   overflow: hidden;     /* ← plus de scroll ici, et ça respecte les coins arrondis */
   border-bottom: solid 0.1px ${theme.colors.greyLight};
+	height: 100%;
+	overflow: hidden;
+	display: grid;
+	grid-template-columns: 1fr;
 
-	.scrollable{
+	.menu-and-admin{
+		position: relative;
+		overflow-y: hidden;
+		display: grid;
+	}
+	/* .scrollable{
 		height: 100%;
 		overflow-y: scroll;
 		overflow-x: hidden;
 		display: grid;
-		grid-template-columns: 1fr;
-	}
+		grid-template-columns: 25% 1fr;
+	} */
 `
