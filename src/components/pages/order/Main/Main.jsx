@@ -2,7 +2,8 @@ import styled from "styled-components"
 import Menu from "./Menu.jsx"
 // import Basket from "./Basket.jsx"
 import { theme } from "../../../../theme/index.js"
-import Admin from "./Admin.jsx"
+import Admin from "./Admin/Admin.jsx"
+
 
 export default function Main() {
 	return (
