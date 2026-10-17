@@ -21,7 +21,7 @@ export default function Main() {
 }
 
 const MainStyled = styled.div`
-	position: relative;   /* repère pour Admin */
+	position: relative;
   flex: 1;
   background-color: ${theme.colors.background_white};
   width: 100%;
@@ -29,8 +29,8 @@ const MainStyled = styled.div`
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   box-sizing: border-box;
-  overflow: hidden;     /* ← plus de scroll ici, et ça respecte les coins arrondis */
-  border-bottom: solid 0.1px ${theme.colors.greyLight};
+  overflow: hidden;
+
 	height: 100%;
 	overflow: hidden;
 	display: grid;

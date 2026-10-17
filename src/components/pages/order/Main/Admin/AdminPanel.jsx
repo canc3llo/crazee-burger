@@ -15,7 +15,7 @@ const AdminPanelStyled = styled.div`
 	box-sizing: border-box;
 	position: relative;
 	background-color: ${theme.colors.white};
-	border : 1px solid ${theme.colors.greyLight};
+	/* border : 1px solid ${theme.colors.greyLight}; */
 	box-shadow: ${theme.shadows.subtle};
 	display: block;
 `
