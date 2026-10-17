@@ -35,7 +35,7 @@ const TabStyled = styled.button`
 
 	&:hover{
 		border-bottom-color: ${theme.colors.white};
-		text-decoration: underline 1px;
+		text-decoration: underline 1.5px;
 	}
 
 	.icon{
