@@ -23,10 +23,11 @@ export default function Menu() {
 
 const MenuStyled = styled.div`
 	display: grid;
-  grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 	grid-auto-rows: 330px;
 	padding: 50px 90px 150px;
 	gap: 60px;
 	justify-items: center;
 	box-sizing: border-box;
+	overflow-y: scroll;
 `

@@ -2,28 +2,50 @@ import styled from "styled-components"
 import Menu from "./Menu.jsx"
 // import Basket from "./Basket.jsx"
 import { theme } from "../../../../theme/index.js"
+import Admin from "./Admin/Admin.jsx"
+import OrderContext from "../../../../context/OrderContext.jsx"
+import { useContext } from "react"
 
 export default function Main() {
+	const {isModeAdmin} = useContext(OrderContext)
+
 	return (
 		<MainStyled>
 			{/* <Basket/> */}
-			<Menu/>
+			<div className="menu-and-admin">
+				<Menu/>
+				{isModeAdmin && <Admin/>}
+			</div>
 		</MainStyled>
 	)
 }
 
 const MainStyled = styled.div`
-	flex: 1;
-	background-color: ${theme.colors.background_white};
-	width: 100%;
-	border-bottom-left-radius: ${theme.borderRadius.extraRound};
-	border-bottom-right-radius: ${theme.borderRadius.extraRound};
-	box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset ;
-	box-sizing: border-box;
-	overflow-y: scroll;
-	overflow-x: hidden;
+	position: relative;
+  flex: 1;
+  background-color: ${theme.colors.background_white};
+  width: 100%;
+  border-bottom-left-radius: ${theme.borderRadius.extraRound};
+  border-bottom-right-radius: ${theme.borderRadius.extraRound};
+  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+  box-sizing: border-box;
+  overflow: hidden;
 
+	height: 100%;
+	overflow: hidden;
 	display: grid;
 	grid-template-columns: 1fr;
-	border-bottom: solid 0.1px ${theme.colors.greyLight};
+
+	.menu-and-admin{
+		position: relative;
+		overflow-y: hidden;
+		display: grid;
+	}
+	/* .scrollable{
+		height: 100%;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		display: grid;
+		grid-template-columns: 25% 1fr;
+	} */
 `

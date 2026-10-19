@@ -1,9 +1,11 @@
-import { Link } from 'react-router'
+import { Link, useParams } from 'react-router'
 import styled from 'styled-components'
 import { theme } from '../../../../theme/index.js'
 import { BsPersonCircle } from 'react-icons/bs'
 
-export default function Logout({ username }) {
+export default function Logout() {
+	const {username} = useParams()
+
 	return (
 		<LogoutStyled>
 			<div className="info">
@@ -32,7 +34,7 @@ const LogoutStyled = styled.div`
 
 	h1{
 		color : ${theme.colors.greyDark};
-		font-size: ${theme.fonts.P0};
+		font-size: ${theme.fonts.SM};
 		font-weight: ${theme.weights.regular};
 		margin: 2px 0;
 
