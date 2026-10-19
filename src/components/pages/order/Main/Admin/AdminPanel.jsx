@@ -4,12 +4,12 @@ import { useContext } from "react"
 import OrderContext from "../../../../../context/OrderContext"
 
 export default function AdminPanel() {
-	const { isEditTab, isAdTab } = useContext(OrderContext)
+	const { currentTabSelected } = useContext(OrderContext)
 
 	return (
 		<AdminPanelStyled>
-			{isAdTab && "Ajouter un produit"}
-			{isEditTab && "Modifier un produit"}
+			{currentTabSelected === "add" ? "Ajouter un produit" : ""}
+			{currentTabSelected === "edit" ? "Modifier un produit" : ""}
 		</AdminPanelStyled>
 	)
 }
