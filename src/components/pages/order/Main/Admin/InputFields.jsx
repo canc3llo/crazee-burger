@@ -4,45 +4,37 @@ import { theme } from "../../../../../theme"
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
-import { useState } from "react";
 
-export default function InputFields() {
-	const [inputValueName, setInputValueName] = useState("")
-	const [inputValueURL, setInputValueURL] = useState("")
-	const [inputValuePrice, setInputValuePrice] = useState("")
-
-	const handleChangeName = (event) => {
-      setInputValueName(event.target.value)
-  }
-
-	const handleChangeURL = (event) => {
-      setInputValueURL(event.target.value)
-  }
-
-	const handleChangePrice = (event) => {
-      setInputValuePrice(event.target.value)
-  }
+export default function InputFields({ newProduct, setNewProduct }) {
+	const handleChange = (event) => {
+		const inputValue = event.target.value
+		const name = event.target.name
+		setNewProduct({...newProduct, [name] : inputValue})
+	}
 
 	return (
 		<InputFieldsStyled>
 			<TextInput
+				name="title"
 				Icon={<FaHamburger className="icon"/>}
-				value={inputValueName}
-				onChange={handleChangeName}
+				value={newProduct.title}
+				onChange={handleChange}
 				placeholder={"Nom du produit (ex. Super Burger)"} 
-				className="text-input-products"/>
-			<TextInput 
+				className={"text-input-products"}/>
+			<TextInput
+				name="imageSource"
 				Icon={<BsFillCameraFill className="icon"/>}
-				value={inputValueURL}
-				onChange={handleChangeURL}
+				value={newProduct.imageSource}
+				onChange={handleChange}
 				placeholder={"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"} 
-				className="text-input-products"/>
-			<TextInput 
+				className={"text-input-products"}/>
+			<TextInput
+				name="price"
 				Icon={<MdOutlineEuro className="icon"/>}
-				value={inputValuePrice}
-				onChange={handleChangePrice }
+				value={newProduct.price ? newProduct.price : ""}
+				onChange={handleChange}
 				placeholder={"Prix"} 
-				className="text-input-products"/>
+				className={"text-input-products"}/>
 		</InputFieldsStyled>
 	)
 }

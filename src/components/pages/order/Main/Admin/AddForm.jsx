@@ -1,24 +1,30 @@
 import styled from "styled-components"
 import InputFields from "./InputFields"
 import SubmitButton from "./SubmitButton"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import OrderContext from "../../../../../context/OrderContext.jsx"
 
-export default function AddForm() {
-	const { menu, setMenu } = useContext(OrderContext)
+const EMPTY_PRODUCT = {
+	id : "",
+	title : "",
+	imageSource: "",
+	price : 0,
+}
 
-	const newProduct = {
-		id : new Date().getTime(),
-		title : "Nouveau produit",
-		imageSource: "https://assets.bonappetit.com/photos/5b919cb83d923e31d08fed17/1:1/w_2240,c_limit/basically-burger-1.jpg",
-		price: "3.5",
-	}
+export default function AddForm() {
+	const { handleAdd } = useContext(OrderContext)
+	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
-		const menuCopy = [...menu]
-		const menuUpdated = [newProduct, ...menuCopy]
-		setMenu(menuUpdated)
+
+		const newProductToAdd = {
+			...newProduct,
+			id : new Date().getTime(),
+		}
+
+		handleAdd(newProductToAdd)
+		setNewProduct(EMPTY_PRODUCT)
 	}
 
 	return (
@@ -26,7 +32,7 @@ export default function AddForm() {
 			<div className="img-preview">
 				img
 			</div>
-			<InputFields/>
+			<InputFields newProduct={newProduct} setNewProduct={setNewProduct}/>
 			<SubmitButton/>
 		</AddFormStyled>
 	)
