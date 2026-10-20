@@ -4,6 +4,8 @@ import { formatPrice } from "../../../../utils/maths.js"
 import OrderContext from "../../../../context/OrderContext.jsx"
 import { useContext } from "react"
 
+const IMAGE_BY_DEFAULT = "/src/assets/img/coming-soon.png"
+
 export default function Menu() {
 	const {menu} = useContext(OrderContext)
 	
@@ -13,7 +15,7 @@ export default function Menu() {
 				return (
 					<Card
 						key={id} 
-						imageSrc={imageSource} 
+						imageSrc={imageSource ? imageSource : IMAGE_BY_DEFAULT} 
 						title={title} 
 						leftDescription={formatPrice(price)}
 					/>

@@ -7,9 +7,8 @@ import { MdOutlineEuro } from "react-icons/md";
 
 export default function InputFields({ newProduct, setNewProduct }) {
 	const handleChange = (event) => {
-		const inputValue = event.target.value
-		const name = event.target.name
-		setNewProduct({...newProduct, [name] : inputValue})
+		const {name, value} = event.target
+		setNewProduct({...newProduct, [name] : value})
 	}
 
 	return (

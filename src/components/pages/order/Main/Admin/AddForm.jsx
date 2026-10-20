@@ -20,7 +20,7 @@ export default function AddForm() {
 
 		const newProductToAdd = {
 			...newProduct,
-			id : new Date().getTime(),
+			id : crypto.randomUUID(),
 		}
 
 		handleAdd(newProductToAdd)
@@ -30,7 +30,11 @@ export default function AddForm() {
 	return (
 		<AddFormStyled onSubmit={handleSubmit}>
 			<div className="img-preview">
-				img
+				{newProduct.imageSource ? ( 
+					<img src={newProduct.imageSource} alt={newProduct.imageSource} /> 
+				) : (
+					<div>Aucune Image</div>
+				)}
 			</div>
 			<InputFields newProduct={newProduct} setNewProduct={setNewProduct}/>
 			<SubmitButton/>
@@ -53,5 +57,19 @@ const AddFormStyled = styled.form`
 		grid-area: 1 / 1 / 4 / 2;
 		border : 1px solid blue;
 		margin-top: -1px;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		img{
+			position: absolute;
+    	inset: 0;
+      height: 100%;
+			width: 100%;
+      object-fit: contain;
+			margin: auto;
+			box-sizing: border-box;
+		}
 	}
 `
