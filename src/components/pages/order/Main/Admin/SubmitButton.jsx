@@ -16,11 +16,11 @@ export default function SubmitButton() {
 	return (
 		<SubmitButtonStyled>
 			<button onClick={handleClick}>Ajouter un nouveau produit au menu</button>
-			{isSubmitted && (
+			{isSubmitted && 
 				<div className="succes">
 					<FiCheck />
 					<span>Ajouté avec succès !</span>
-				</div>)}
+				</div>}
 			
 		</SubmitButtonStyled>
 	)
