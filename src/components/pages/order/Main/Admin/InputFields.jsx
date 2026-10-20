@@ -47,16 +47,20 @@ export default function InputFields() {
 	)
 }
 
-const InputFieldsStyled = styled.form`
+const InputFieldsStyled = styled.div`
+	width: 100%;
+	height: 100%;
+	gap: 8px 0;
+	border : 1px solid red;
+	grid-area: 1/2 / 4/3;
 	display: flex;
 	flex-direction: column;
-	width: 645px;
-	height: 121px;
-	gap: 8px 0;
 	
 	.text-input-products{
 		background-color: ${theme.colors.background_white};
 		margin: 0;
+		border : 1px solid blue;
+		
 		input{
 			background-color: ${theme.colors.background_white};
 			margin-left: 13px;

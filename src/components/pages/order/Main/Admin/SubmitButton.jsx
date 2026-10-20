@@ -13,9 +13,12 @@ const SubmitButtonStyled = styled.button`
 	width: 275px;
 	height: 34px;
 	margin-top: 8px;
+
 	border-radius: ${theme.borderRadius.round};
 	background-color: ${theme.colors.success};
 	border : 1px solid ${theme.colors.success};
+	grid-column: 2;
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
