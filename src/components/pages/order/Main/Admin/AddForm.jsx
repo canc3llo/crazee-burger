@@ -3,6 +3,7 @@ import InputFields from "./InputFields"
 import SubmitButton from "./SubmitButton"
 import { useContext, useState } from "react"
 import OrderContext from "../../../../../context/OrderContext.jsx"
+import { theme } from "../../../../../theme/index.js"
 
 const EMPTY_PRODUCT = {
 	id : "",
@@ -33,7 +34,7 @@ export default function AddForm() {
 				{newProduct.imageSource ? ( 
 					<img src={newProduct.imageSource} alt={newProduct.imageSource} /> 
 				) : (
-					<div>Aucune Image</div>
+					<p>Aucune image</p>
 				)}
 			</div>
 			<InputFields newProduct={newProduct} setNewProduct={setNewProduct}/>
@@ -43,24 +44,24 @@ export default function AddForm() {
 }
 
 const AddFormStyled = styled.form`
-	border : 1px solid red;
 	display: grid;
 	grid-template-columns: 1fr 3fr;
 	grid-template-rows: repeat(4, 1fr);
 	height: 75%;
-	width: 60%;
+	width: 65%;
 	min-width: 600px;
 	gap: 0 20px;
 	box-sizing: border-box;
 
 	.img-preview{
 		grid-area: 1 / 1 / 4 / 2;
-		border : 1px solid blue;
+		border : 1px solid ${theme.colors.greyLight};
 		margin-top: -1px;
 		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		border-radius: ${theme.borderRadius.round};
 
 		img{
 			position: absolute;
@@ -70,6 +71,12 @@ const AddFormStyled = styled.form`
       object-fit: contain;
 			margin: auto;
 			box-sizing: border-box;
+		}
+
+		p{
+			color: ${theme.colors.greySemiDark};
+			font-size: ${theme.fonts.P0};
+			font-weight: ${theme.weights.regular};
 		}
 	}
 `
