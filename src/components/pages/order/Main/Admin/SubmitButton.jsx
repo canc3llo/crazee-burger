@@ -21,7 +21,6 @@ export default function SubmitButton() {
 					<FiCheck />
 					<span>Ajouté avec succès !</span>
 				</div>}
-			
 		</SubmitButtonStyled>
 	)
 }
