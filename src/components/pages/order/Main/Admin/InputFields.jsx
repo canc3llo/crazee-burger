@@ -1,6 +1,5 @@
-import styled from "styled-components"
+ import styled from "styled-components"
 import TextInput from "../../../../reusable-ui/TextInput"
-import { theme } from "../../../../../theme"
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
@@ -15,25 +14,30 @@ export default function InputFields({ newProduct, setNewProduct }) {
 		<InputFieldsStyled>
 			<TextInput
 				name="title"
-				Icon={<FaHamburger className="icon"/>}
+				Icon={<FaHamburger className="icon-new-product"/>}
 				value={newProduct.title}
 				onChange={handleChange}
 				placeholder={"Nom du produit (ex. Super Burger)"} 
-				className={"text-input-products"}/>
+				className={"text-input-products"}
+				version="minimalist"
+			/>
 			<TextInput
 				name="imageSource"
-				Icon={<BsFillCameraFill className="icon"/>}
+				Icon={<BsFillCameraFill className="icon-new-product"/>}
 				value={newProduct.imageSource}
 				onChange={handleChange}
 				placeholder={"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"} 
-				className={"text-input-products"}/>
+				className={"text-input-products"}
+				version="minimalist"
+			/>
 			<TextInput
 				name="price"
-				Icon={<MdOutlineEuro className="icon"/>}
+				Icon={<MdOutlineEuro/>}
 				value={newProduct.price ? newProduct.price : ""}
 				onChange={handleChange}
-				placeholder={"Prix"} 
-				className={"text-input-products"}/>
+				placeholder={"Prix"}
+				version="minimalist"
+			/>
 		</InputFieldsStyled>
 	)
 }
@@ -45,22 +49,4 @@ const InputFieldsStyled = styled.div`
 	grid-area: 1/2 / 4/3;
 	display: flex;
 	flex-direction: column;
-	
-	.text-input-products{
-		background-color: ${theme.colors.background_white};
-		margin: 0;
-		
-		input{
-			background-color: ${theme.colors.background_white};
-			margin-left: 13px;
-			
-				&::placeholder{
-				color : ${theme.colors.greySemiDark};
-				background-color: ${theme.colors.background_white};
-				}
-		}
-		.icon{
-			color: ${theme.colors.greyDark}
-		}
-	}
 `

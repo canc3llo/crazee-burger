@@ -1,10 +1,12 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../../theme/index.js" 
 
-export default function TextInput({ className, value, onChange, Icon, ...extraProps }) {
+export default function TextInput({ value, onChange, Icon, version, ...extraProps }) {
 	return (
-		<TextInputStyled className={className}>
-			{Icon && Icon}
+		<TextInputStyled version={version}>
+			<div className="icon">
+				{Icon && Icon}
+			</div>
 			<input
 				value={value}
 				onChange={onChange}
@@ -28,13 +30,14 @@ const TextInputStyled = styled.div`
 		font-size: ${theme.fonts.SM};
 		color : ${theme.colors.greySemiDark};
 		margin-left: 25px;
+		display: flex;
 	}
 
 	input{
 	font-family: Arial, sans-serif;
 	font-size: ${theme.fonts.SM};
 	font-weight: ${theme.weights.regular};
-	margin-left: 8px;
+	margin-left: 10px;
 	border: none ;
 	width: 100%;
 	margin-right: 25px;
@@ -43,5 +46,30 @@ const TextInputStyled = styled.div`
 			color : ${theme.colors.greySemiDark};
 			background-color: ${theme.colors.white};
 		}
+	}
+	${(props) => {
+		if (props.version === "normal") return textInputNormalStyle
+		if (props.version === "minimalist") return textInputMinimalistStyle
+	}}
+`
+
+const textInputNormalStyle = css`
+`
+
+const textInputMinimalistStyle = css`
+	background-color: ${theme.colors.background_white};
+	margin: 0;
+	
+	input{
+		background-color: ${theme.colors.background_white};
+		margin-left: 13px;
+		
+			&::placeholder{
+			color : ${theme.colors.greySemiDark};
+			background-color: ${theme.colors.background_white};
+			}
+	}
+	.icon{
+		color: ${theme.colors.greyDark}
 	}
 `

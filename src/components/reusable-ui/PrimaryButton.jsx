@@ -5,7 +5,7 @@ export default function PrimaryButton({ className, label, Icon, onClick }) {
 	return (
 		<PrimaryButtonStyled className={className} onClick={onClick}>
 			<span>{label}</span>
-			{Icon && Icon}
+			{Icon && <div className="icon">{Icon}</div>}
 		</PrimaryButtonStyled>
 	)
 }
@@ -28,5 +28,11 @@ const PrimaryButtonStyled = styled.button`
 		background-color: ${theme.colors.white};
 		color: ${theme.colors.primary_burger};
 		cursor: pointer;
+	}
+
+	.icon{
+		margin-left: 10px;
+		margin-top: 1px;
+		display: flex;
 	}
 `
