@@ -22,7 +22,6 @@ const TextInputStyled = styled.div`
 	background-color: ${theme.colors.white};
 	display: flex;
 	align-items: center;
-	border : 1px solid blue;
 	margin: 0px 32px 18px 32px;
 
 	.icon{

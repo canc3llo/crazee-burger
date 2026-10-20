@@ -3,7 +3,6 @@ import { theme } from "../../../../../theme"
 import { useContext } from "react"
 import OrderContext from "../../../../../context/OrderContext"
 import { getTabsConfig, getTabSelected } from "./getTabsConfig"
-import AddProduct from "./AddProduct"
 
 export default function AdminPanel() {
 	const { currentTabSelected } = useContext(OrderContext)
@@ -13,8 +12,7 @@ export default function AdminPanel() {
 
 	return (
 		<AdminPanelStyled>
-			{/* {tabSelected && tabSelected.label} */}
-			<AddProduct/>
+			{tabSelected && tabSelected.Content}
 		</AdminPanelStyled>
 	)
 }

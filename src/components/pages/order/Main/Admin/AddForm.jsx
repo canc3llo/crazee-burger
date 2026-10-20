@@ -1,20 +1,22 @@
 import styled from "styled-components"
-import AddProductForm from "./AddProductForm"
+import InputFields from "./InputFields"
+import SubmitButton from "./SubmitButton"
 
-export default function AddProduct() {
+export default function AddForm() {
 	return (
-		<AddProductStyled>
+		<AddFormStyled>
 			<div className="img-container">
 				1
 			</div>
-
-      <AddProductForm/>
-
-		</AddProductStyled>
+			<div className="input-button">
+				<InputFields/>
+				<SubmitButton/>
+			</div>
+		</AddFormStyled>
 	)
 }
 
-const AddProductStyled = styled.div`
+const AddFormStyled = styled.div`
 	border : 1px solid red;
 	display: grid;
 	grid-template-columns: repeat(2, auto);
@@ -27,5 +29,10 @@ const AddProductStyled = styled.div`
 		height: 120px;
 		border : 1px solid blue;
 		margin-top: -1px;
+	}
+	
+	.input-button{
+		display: flex;
+		flex-direction: column;
 	}
 `
