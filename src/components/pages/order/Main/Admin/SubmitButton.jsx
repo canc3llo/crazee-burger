@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { theme } from "../../../../../theme"
 import { FiCheck } from "react-icons/fi";
 import { useState } from "react";
+import PrimaryButton from "../../../../reusable-ui/PrimaryButton.jsx"
 
 export default function SubmitButton() {
 	const [isSubmitted, setIsSubmitted] = useState(false)
@@ -15,7 +16,10 @@ export default function SubmitButton() {
 
 	return (
 		<SubmitButtonStyled>
-			<button onClick={handleClick}>Ajouter un nouveau produit au menu</button>
+			<PrimaryButton 
+				onClick={handleClick}
+				label={"Ajouter un nouveau produit au menu"}
+				version={"succes"}/>
 			{isSubmitted && 
 				<div className="succes">
 					<FiCheck />
@@ -30,30 +34,6 @@ const SubmitButtonStyled = styled.div`
 	margin-top: 8px;
 	display: flex;
 	flex-direction: row;
-
-	button{
-		width: 275px;
-		height: 34px;
-
-		border-radius: ${theme.borderRadius.round};
-		background-color: ${theme.colors.success};
-		border : 1px solid ${theme.colors.success};
-
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		cursor: pointer;
-
-		color : white;
-		font-size: ${theme.fonts.XS};
-		font-weight: ${theme.weights.bold};
-
-		&:hover{
-			background-color: ${theme.colors.white};
-			color: ${theme.colors.success};
-		}
-
-	}
 	
 	.succes{
 		display: flex;

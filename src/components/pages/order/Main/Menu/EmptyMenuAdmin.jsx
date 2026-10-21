@@ -14,7 +14,7 @@ export default function EmptyMenuAdmin() {
 			<PrimaryButton 
 				label={"Générer de nouveaux produits"} 
 				onClick={resetMenu} 
-				className={"btn-reset"}/>
+				version={"big"}/>
 		</EmptyMenuAdminStyled>
 	)
 }
@@ -40,12 +40,5 @@ const EmptyMenuAdminStyled = styled.div`
 		color: ${theme.colors.greyBlue};
 		margin-top: 21px;
 		margin-bottom: 31px;
-	}
-
-	.btn-reset{
-		height: 50px;
-		width: 224px;
-		font-weight: ${theme.weights.bold};
-		font-size: ${theme.fonts.XS};
 	}
 `

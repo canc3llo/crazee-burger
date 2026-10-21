@@ -17,7 +17,7 @@ export default function Card({imageSrc, title, leftDescription, hasDeleteButton,
 				<h1>{title}</h1>
 				<div className="bottom-description">
 					<h2>{leftDescription}</h2>
-					<PrimaryButton className={"btn-ajouter"} label={"Ajouter"}/>
+					<PrimaryButton version="minimalist" label={"Ajouter"}/>
 				</div>
 			</div>
 		</CardStyled>
@@ -110,12 +110,6 @@ const CardStyled = styled.div`
 				font-weight: 300;
 				font-size: 16px;
 				color: ${theme.colors.primary};
-			}
-
-			.btn-ajouter{
-				width: 95px;
-				height: 38px;
-				font-size: ${theme.fonts.XS};
 			}
 		}
 	}
