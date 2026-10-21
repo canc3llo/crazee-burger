@@ -1,20 +1,12 @@
 import styled from "styled-components"
 import InputFields from "./InputFields"
 import SubmitButton from "./SubmitButton"
-import { useContext, useState } from "react"
+import { useContext  } from "react"
 import OrderContext from "../../../../../context/OrderContext.jsx"
 import { theme } from "../../../../../theme/index.js"
 
-const EMPTY_PRODUCT = {
-	id : "",
-	title : "",
-	imageSource: "",
-	price : 0,
-}
-
 export default function AddForm() {
-	const { handleAdd } = useContext(OrderContext)
-	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+	const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
@@ -25,7 +17,7 @@ export default function AddForm() {
 		}
 
 		handleAdd(newProductToAdd)
-		setNewProduct(EMPTY_PRODUCT)
+		setNewProduct(theme.EMPTY_PRODUCT)
 	}
 
 	return (
@@ -49,12 +41,12 @@ const AddFormStyled = styled.form`
 	grid-template-rows: repeat(4, 1fr);
 	height: 75%;
 	width: 65%;
-	min-width: 600px;
+	min-width: 700px;
 	gap: 0 20px;
 	box-sizing: border-box;
 
 	.img-preview{
-		grid-area: 1 / 1 / 4 / 2;
+		grid-area: 1 / 1 / 5 / 2;
 		border : 1px solid ${theme.colors.greyLight};
 		margin-top: -1px;
 		position: relative;

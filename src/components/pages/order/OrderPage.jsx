@@ -6,11 +6,13 @@ import { useState } from "react"
 import OrderContext from "../../../context/OrderContext.jsx"
 import { fakeMenu } from "../../../fakeData/fakeMenu"
 
+
 export default function OrderPage() {
 	const [isModeAdmin, setIsModeAdmin] = useState(false)
 	const [isCollapsed, setIsCollapsed] = useState(false)
 	const [currentTabSelected, setCurrentTabSelected] = useState("add")
-	const [menu, setMenu] = useState(fakeMenu.SMALL)
+	const [menu, setMenu] = useState(fakeMenu.MEDIUM)
+	const [newProduct, setNewProduct] = useState(theme.EMPTY_PRODUCT)
 
 	const handleAdd = (newProduct) => {
 		const menuCopy = [...menu]
@@ -38,7 +40,9 @@ export default function OrderPage() {
 		menu,
 		handleAdd,
 		handleDelete,
-		resetMenu
+		resetMenu,
+		newProduct, 
+		setNewProduct,
 	}
 
   return (

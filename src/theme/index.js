@@ -62,6 +62,13 @@ const weights = {
   heavy: 800,
 }
 
+export const EMPTY_PRODUCT = {
+	id : "",
+	title : "",
+	imageSource: "",
+	price : 0,
+}
+
 export const theme = {
   colors,
   fonts,
@@ -70,4 +77,5 @@ export const theme = {
   shadows,
   weights,
   spacing,
+	EMPTY_PRODUCT,
 }
