@@ -4,6 +4,7 @@ import SubmitButton from "./SubmitButton"
 import { useContext  } from "react"
 import OrderContext from "../../../../../context/OrderContext.jsx"
 import { theme } from "../../../../../theme/index.js"
+import ImagePreview from "./ImagePreview.jsx"
 
 export default function AddForm() {
 	const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
@@ -22,13 +23,7 @@ export default function AddForm() {
 
 	return (
 		<AddFormStyled onSubmit={handleSubmit}>
-			<div className="img-preview">
-				{newProduct.imageSource ? ( 
-					<img src={newProduct.imageSource} alt={newProduct.imageSource} /> 
-				) : (
-					<p>Aucune image</p>
-				)}
-			</div>
+			<ImagePreview newProduct={newProduct}/>
 			<InputFields newProduct={newProduct} setNewProduct={setNewProduct}/>
 			<SubmitButton/>
 		</AddFormStyled>
@@ -44,31 +39,4 @@ const AddFormStyled = styled.form`
 	min-width: 700px;
 	gap: 0 20px;
 	box-sizing: border-box;
-
-	.img-preview{
-		grid-area: 1 / 1 / 5 / 2;
-		border : 1px solid ${theme.colors.greyLight};
-		margin-top: -1px;
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border-radius: ${theme.borderRadius.round};
-
-		img{
-			position: absolute;
-    	inset: 0;
-      height: 100%;
-			width: 100%;
-      object-fit: contain;
-			margin: auto;
-			box-sizing: border-box;
-		}
-
-		p{
-			color: ${theme.colors.greySemiDark};
-			font-size: ${theme.fonts.P0};
-			font-weight: ${theme.weights.regular};
-		}
-	}
 `

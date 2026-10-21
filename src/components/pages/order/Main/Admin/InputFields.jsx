@@ -10,34 +10,53 @@ export default function InputFields({ newProduct, setNewProduct }) {
 		setNewProduct({...newProduct, [name] : value})
 	}
 
+	const inputTextProps = [
+		{
+			id: "0",
+			name: "title",
+			Icon: <FaHamburger className="icon-new-product"/>,
+			value: newProduct.title,
+			onChange: handleChange,
+			placeholder: "Nom du produit (ex. Super Burger)",
+			className: "text-input-products",
+			version: "minimalist",
+		},
+		{
+			id: "1",
+			name: "imageSource",
+			Icon: <BsFillCameraFill className="icon-new-product"/>,
+			value: newProduct.imageSource,
+			onChange: handleChange,
+			placeholder: "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
+			className: "text-input-products",
+			version: "minimalist",
+		},
+		{
+			id: "2",
+			name: "price",
+			Icon: <MdOutlineEuro/>,
+			value: newProduct.price ? newProduct.price : "",
+			onChange: handleChange,
+			placeholder: "Prix",
+			version: "minimalist",
+		},
+	]
+
 	return (
 		<InputFieldsStyled>
-			<TextInput
-				name="title"
-				Icon={<FaHamburger className="icon-new-product"/>}
-				value={newProduct.title}
-				onChange={handleChange}
-				placeholder={"Nom du produit (ex. Super Burger)"} 
-				className={"text-input-products"}
-				version="minimalist"
-			/>
-			<TextInput
-				name="imageSource"
-				Icon={<BsFillCameraFill className="icon-new-product"/>}
-				value={newProduct.imageSource}
-				onChange={handleChange}
-				placeholder={"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"} 
-				className={"text-input-products"}
-				version="minimalist"
-			/>
-			<TextInput
-				name="price"
-				Icon={<MdOutlineEuro/>}
-				value={newProduct.price ? newProduct.price : ""}
-				onChange={handleChange}
-				placeholder={"Prix"}
-				version="minimalist"
-			/>
+			{inputTextProps.map(input => (
+				<TextInput 
+					key={input.id}
+					name={input.name}
+					Icon={input.Icon}
+					value={input.value}
+					onChange={input.onChange}
+					placeholder={input.placeholder}
+					className={input.className}
+					version={input.version}
+					// {...input}
+				/>
+			))}
 		</InputFieldsStyled>
 	)
 }
