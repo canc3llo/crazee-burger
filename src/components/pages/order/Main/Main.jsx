@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Menu from "./Menu.jsx"
+import Menu from "./Menu/Menu.jsx"
 // import Basket from "./Basket.jsx"
 import { theme } from "../../../../theme/index.js"
 import Admin from "./Admin/Admin.jsx"

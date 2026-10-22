@@ -4,11 +4,31 @@ import Navbar from "./Navbar/NavBar.jsx"
 import Main from "./Main/Main.jsx"
 import { useState } from "react"
 import OrderContext from "../../../context/OrderContext.jsx"
+import { fakeMenu } from "../../../fakeData/fakeMenu"
+
 
 export default function OrderPage() {
 	const [isModeAdmin, setIsModeAdmin] = useState(false)
 	const [isCollapsed, setIsCollapsed] = useState(false)
 	const [currentTabSelected, setCurrentTabSelected] = useState("add")
+	const [menu, setMenu] = useState(fakeMenu.MEDIUM)
+	const [newProduct, setNewProduct] = useState(theme.EMPTY_PRODUCT)
+
+	const handleAdd = (newProduct) => {
+		const menuCopy = [...menu]
+		const menuUpdated = [newProduct, ...menuCopy]
+		setMenu(menuUpdated)
+	}
+
+	const handleDelete = (idProductToDelete) => {
+		const menuCopy = [...menu]
+		const menuUpdated = menuCopy.filter((product) => product.id !== idProductToDelete)
+		setMenu(menuUpdated)
+	}
+
+	const resetMenu = () => {
+		setMenu(fakeMenu.MEDIUM)
+	}
 
 	const orderContextValue = {
 		isModeAdmin,
@@ -17,6 +37,12 @@ export default function OrderPage() {
 		setIsCollapsed,
 		currentTabSelected, 
 		setCurrentTabSelected,
+		menu,
+		handleAdd,
+		handleDelete,
+		resetMenu,
+		newProduct, 
+		setNewProduct,
 	}
 
   return (

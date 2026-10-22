@@ -1,10 +1,15 @@
 import styled from "styled-components"
 import { theme } from "../../theme/index.js"
 import PrimaryButton from "./PrimaryButton.jsx"
+import { TiDelete } from "react-icons/ti";
 
-export default function Card({imageSrc, title, leftDescription}) {
+export default function Card({imageSrc, title, leftDescription, hasDeleteButton, onDelete}) {
 	return (
 		<CardStyled>
+			{hasDeleteButton &&
+				<button className="btn-delete" aria-label="btn-delete" onClick={onDelete}>
+					<TiDelete className="icon"/>
+				</button>}
 			<div className="img-container">
 				<img src={imageSrc} alt={title}/>
 			</div>
@@ -12,7 +17,7 @@ export default function Card({imageSrc, title, leftDescription}) {
 				<h1>{title}</h1>
 				<div className="bottom-description">
 					<h2>{leftDescription}</h2>
-					<PrimaryButton className={"btn-ajouter"} label={"Ajouter"}/>
+					<PrimaryButton version="primary" size="small" label={"Ajouter"}/>
 				</div>
 			</div>
 		</CardStyled>
@@ -30,6 +35,30 @@ const CardStyled = styled.div`
 	padding: 50px 20px 20px 20px;
 	box-sizing: border-box;
 	gap: 15px;
+	position: relative;
+
+	.btn-delete{
+		color: ${theme.colors.primary};
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		width: 30px;
+		height: 30px;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
+		z-index: 2;
+
+		&:hover{
+			color: ${theme.colors.red};
+		}
+
+		.icon{
+			width: 100%;
+			height: 100%;
+		}
+	}
 
 	.img-container{
 		flex: 1;
@@ -81,12 +110,6 @@ const CardStyled = styled.div`
 				font-weight: 300;
 				font-size: 16px;
 				color: ${theme.colors.primary};
-			}
-
-			.btn-ajouter{
-				width: 95px;
-				height: 38px;
-				font-size: ${theme.fonts.XS};
 			}
 		}
 	}

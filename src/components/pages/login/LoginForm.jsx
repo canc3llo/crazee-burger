@@ -9,7 +9,7 @@ import PrimaryButton from "../../reusable-ui/PrimaryButton.jsx"
 
 export default function LoginForm() {
     //state ((data) (variables))
-		const [inputValue, setInputValue] = useState("")	
+		const [inputValue, setInputValue] = useState("Bob")	
     const navigate = useNavigate()
   
     //comportement
@@ -32,12 +32,14 @@ export default function LoginForm() {
         <TextInput 
 					value={inputValue} 
 					onChange={handleChange} 
-					Icon={<BsPersonCircle className="icon" />} 
-					placeholder="Entrez votre prénom" required 
+					Icon={<BsPersonCircle/>} 
+					placeholder="Entrez votre prénom" required
+					version="normal" 
 				/>
         <PrimaryButton 
 					label="Accéder à mon espace" 
-					Icon={<IoChevronForward className="icon-button" />}
+					Icon={<IoChevronForward className="icon-button"/>}
+					version="primary" size="normal"
 				/>
       </LoginFormStyled>)
 }
@@ -74,11 +76,4 @@ const LoginFormStyled = styled.form`
 		margin: 40px 0px 18px 0px;
 		color: ${theme.colors.white};
 	}
-
-	.icon-button{
-		margin-left: 10px;
-		margin-top: 1px;
-	}
-	
-		
 `
