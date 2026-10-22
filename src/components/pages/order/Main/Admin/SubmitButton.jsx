@@ -19,7 +19,7 @@ export default function SubmitButton() {
 			<PrimaryButton 
 				onClick={handleClick}
 				label={"Ajouter un nouveau produit au menu"}
-				version={"succes"}/>
+				version="succes" size="extralarge"/>
 			{isSubmitted && 
 				<div className="succes">
 					<FiCheck />

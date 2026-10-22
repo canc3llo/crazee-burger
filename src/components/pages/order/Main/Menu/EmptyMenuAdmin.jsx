@@ -14,7 +14,7 @@ export default function EmptyMenuAdmin() {
 			<PrimaryButton 
 				label={"Générer de nouveaux produits"} 
 				onClick={resetMenu} 
-				version={"big"}/>
+				version="primary" size="large"/>
 		</EmptyMenuAdminStyled>
 	)
 }

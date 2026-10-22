@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components"
 import { theme } from "../../theme/index.js"
 
-export default function PrimaryButton({ version, label, Icon, onClick }) {
+export default function PrimaryButton({ version, size, label, Icon, onClick }) {
 	return (
-		<PrimaryButtonStyled version={version} onClick={onClick}>
+		<PrimaryButtonStyled version={version} size={size} onClick={onClick}>
 			<span>{label}</span>
 			{Icon && <div className="icon">{Icon}</div>}
 		</PrimaryButtonStyled>
@@ -11,8 +11,6 @@ export default function PrimaryButton({ version, label, Icon, onClick }) {
 }
 
 const PrimaryButtonStyled = styled.button`
-	width: 100%;
-	height: 53px;
 	background-color: ${theme.colors.primary_burger};
 	font-family: Arial, sans-serif;
 	font-weight: 900;
@@ -36,29 +34,19 @@ const PrimaryButtonStyled = styled.button`
 		display: flex;
 	}
 
-	${({version}) => extraStyle[version]}
+	${({version, size}) => getButtonStyle(version, size)};
+`
+const getButtonStyle = (version, size) => {
+	if (version === "primary") return buttonPrimaryStyle(size)
+	if (version === "succes") return buttonSuccesStyle(size)
+}
+
+const buttonPrimaryStyle = (size) => css`
+	${extraStyle[size]}
 `
 
-const buttonNormalStyle = css`
-`
 
-const buttonBigStyle = css`
-	height: 50px;
-	width: 224px;
-	font-weight: ${theme.weights.bold};
-	font-size: ${theme.fonts.XS};
-`
-
-const buttonMinimalistStyle = css`
-	width: 95px;
-	height: 38px;
-	font-size: ${theme.fonts.XS};
-`
-
-const buttonSuccesStyle = css`
-	width: 275px;
-	height: 34px;
-
+const buttonSuccesStyle = (size) => css`
 	border-radius: ${theme.borderRadius.round};
 	background-color: ${theme.colors.success};
 	border : 1px solid ${theme.colors.success};
@@ -76,11 +64,36 @@ const buttonSuccesStyle = css`
 		background-color: ${theme.colors.white};
 		color: ${theme.colors.success};
 	}
+	${extraStyle[size]}
+`
+
+
+const buttonNormalStyle = css`
+	width: 100%;
+	height: 53px;
+`
+
+const buttonExtraLargeStyle = css`
+	width: 275px;
+	height: 34px; //succes
+`
+
+const buttonLargeStyle = css`
+	width: 224px;
+	height: 50px;
+	font-weight: ${theme.weights.bold};
+	font-size: ${theme.fonts.XS};
+`
+
+const buttonSmallStyle = css`
+	width: 95px;
+	height: 38px;
+	font-size: ${theme.fonts.XS};
 `
 
 const extraStyle = {
 	normal: buttonNormalStyle,
-	big: buttonBigStyle,
-	minimalist: buttonMinimalistStyle,
-	succes: buttonSuccesStyle,
+	extralarge: buttonExtraLargeStyle,
+	large: buttonLargeStyle,
+	small: buttonSmallStyle,
 }

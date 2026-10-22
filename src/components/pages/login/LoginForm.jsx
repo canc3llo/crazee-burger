@@ -38,8 +38,8 @@ export default function LoginForm() {
 				/>
         <PrimaryButton 
 					label="Accéder à mon espace" 
-					Icon={<IoChevronForward className="icon-button" 
-					version="normal"/>}
+					Icon={<IoChevronForward className="icon-button"/>}
+					version="primary" size="normal"
 				/>
       </LoginFormStyled>)
 }

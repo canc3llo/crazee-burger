@@ -17,7 +17,7 @@ export default function Card({imageSrc, title, leftDescription, hasDeleteButton,
 				<h1>{title}</h1>
 				<div className="bottom-description">
 					<h2>{leftDescription}</h2>
-					<PrimaryButton version="minimalist" label={"Ajouter"}/>
+					<PrimaryButton version="primary" size="small" label={"Ajouter"}/>
 				</div>
 			</div>
 		</CardStyled>
