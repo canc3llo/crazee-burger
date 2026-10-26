@@ -11,14 +11,20 @@ export default function OrderPage() {
 	const [isModeAdmin, setIsModeAdmin] = useState(false)
 	const [isCollapsed, setIsCollapsed] = useState(false)
 	const [isModeEdit, setIsModeEdit] = useState(false)
-	const [currentTabSelected, setCurrentTabSelected] = useState("add")
+	const [currentTabSelected, setCurrentTabSelected] = useState("edit")
 	const [menu, setMenu] = useState(fakeMenu.MEDIUM)
 	const [newProduct, setNewProduct] = useState(theme.EMPTY_PRODUCT)
+	const [editProduct, setEditProduct] = useState(theme.EMPTY_PRODUCT)
 
 	const handleAdd = (newProduct) => {
 		const menuCopy = [...menu]
 		const menuUpdated = [newProduct, ...menuCopy]
 		setMenu(menuUpdated)
+	}
+
+	const handleEdit = (editProduct) => {
+		const editProductCopy = editProduct
+		setEditProduct(editProductCopy)
 	}
 
 	const handleDelete = (idProductToDelete) => {
@@ -42,10 +48,13 @@ export default function OrderPage() {
 		setCurrentTabSelected,
 		menu,
 		handleAdd,
+		handleEdit,
 		handleDelete,
 		resetMenu,
 		newProduct, 
 		setNewProduct,
+		editProduct, 
+		setEditProduct,
 	}
 
   return (

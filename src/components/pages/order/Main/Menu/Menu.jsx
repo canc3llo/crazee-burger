@@ -9,11 +9,11 @@ import EmptyMenuClient from "./EmptyMenuClient.jsx"
 const IMAGE_BY_DEFAULT = "/src/assets/img/coming-soon.png"
 
 export default function Menu() {
-	const {menu, isModeAdmin, handleDelete, setIsModeEdit } = useContext(OrderContext)
+	const {menu, isModeAdmin, handleDelete, setIsModeEdit, handleEdit } = useContext(OrderContext)
 
 	const handleClickCard = (product) =>{
 		setIsModeEdit(true)
-		const productToEditCopy = product
+		handleEdit(product)
 	}
 
 	if (menu.length === 0){

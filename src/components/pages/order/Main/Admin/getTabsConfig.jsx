@@ -15,6 +15,7 @@ export const getTabsConfig = () => [
 		label: "Modifier un produit",
 		Icon: <MdModeEditOutline/>,
 		Content: <EditForm/>,
+		// Content: <HintMessage/>,
 	},
 ]
 
