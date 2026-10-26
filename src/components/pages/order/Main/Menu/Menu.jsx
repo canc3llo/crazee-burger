@@ -9,8 +9,12 @@ import EmptyMenuClient from "./EmptyMenuClient.jsx"
 const IMAGE_BY_DEFAULT = "/src/assets/img/coming-soon.png"
 
 export default function Menu() {
-	const {menu, isModeAdmin, handleDelete } = useContext(OrderContext)
+	const {menu, isModeAdmin, handleDelete, setIsModeEdit } = useContext(OrderContext)
 
+	const handleClickCard = (product) =>{
+		setIsModeEdit(true)
+		const productToEditCopy = product
+	}
 
 	if (menu.length === 0){
 		if(!isModeAdmin)
@@ -21,9 +25,11 @@ export default function Menu() {
 	
 	return (
 		<MenuStyled>
-			{menu.map(({id, imageSource, title, price}) => {
+			{menu.map((product) => {
+				const { id, imageSource, title, price } = product
 				return (
 					<Card
+						onClick={() => handleClickCard(product)}
 						key={id} 
 						imageSrc={imageSource ? imageSource : IMAGE_BY_DEFAULT} 
 						title={title} 

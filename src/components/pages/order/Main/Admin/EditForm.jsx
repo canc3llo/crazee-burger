@@ -4,34 +4,34 @@ import InputFields from "./InputFields"
 import { useContext } from "react"
 import OrderContext from "../../../../../context/OrderContext"
 import ImagePreview from "./ImagePreview.jsx"
-// import { HiCursorClick } from "react-icons/hi";
+import { HiCursorClick } from "react-icons/hi";
 
 export default function EditForm() {
-	const { newProduct, setNewProduct } = useContext(OrderContext)
+	const { newProduct, setNewProduct, isModeEdit } = useContext(OrderContext)
 
 	return (
 		<EditFormStyled>
-			{/* <div className="click-to-edit">
-				<h2>Cliquer sur un produit pour le modifier</h2>
-				<HiCursorClick className="icon"/>
-			</div> */}
-			<ImagePreview newProduct={newProduct}/>
-			<InputFields newProduct={newProduct} setNewProduct={setNewProduct}/>
-			<p>Cliquer sur un produit du menu pour le modifier en temps réel</p>
+			{isModeEdit ? (
+        <div className="mode-edit">
+          <ImagePreview newProduct={newProduct} />
+          <InputFields newProduct={newProduct} setNewProduct={setNewProduct} />
+          <p>Cliquer sur un produit du menu pour le modifier en temps réel</p>
+        </div>
+      ) : (
+        <div className="click-to-edit">
+          <h2>Cliquer sur un produit pour le modifier</h2>
+          <HiCursorClick className="icon" />
+        </div>
+      )}
 		</EditFormStyled>
 	)
 }
 
 const EditFormStyled = styled.div`
-	display: grid;
-	grid-template-columns: 1fr 3fr;
-	grid-template-rows: repeat(4, 1fr);
 	height: 75%;
 	width: 65%;
 	min-width: 700px;
-	gap: 0 20px;
-	box-sizing: border-box;
-	border : 1px solid purple;
+	
 
 	.click-to-edit{
 		display: flex;
@@ -55,12 +55,21 @@ const EditFormStyled = styled.div`
 			font-size: ${theme.fonts.P3};
 		}
 	}
+	.mode-edit{
+		display: grid;
+		grid-template-columns: 1fr 3fr;
+		grid-template-rows: repeat(4, 1fr);
+		height: 100%;
+		width: 100%;
+		gap: 0 20px;
+		box-sizing: border-box;
 
-	> p{
-			font-size: ${theme.fonts.SM};
-			border: 1px solid red;
-			color: ${theme.colors.primary};
-			font-weight: ${theme.weights.regular};
-			margin-bottom: 0px;
-		}
+		> p{
+				font-size: ${theme.fonts.SM};
+				border: 1px solid red;
+				color: ${theme.colors.primary};
+				font-weight: ${theme.weights.regular};
+				margin-bottom: 0px;
+			}
+	}
 `

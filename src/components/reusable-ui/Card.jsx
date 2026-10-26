@@ -3,9 +3,9 @@ import { theme } from "../../theme/index.js"
 import PrimaryButton from "./PrimaryButton.jsx"
 import { TiDelete } from "react-icons/ti";
 
-export default function Card({imageSrc, title, leftDescription, hasDeleteButton, onDelete}) {
+export default function Card({imageSrc, title, leftDescription, hasDeleteButton, onDelete, onClick}) {
 	return (
-		<CardStyled>
+		<CardStyled onClick={onClick}>
 			{hasDeleteButton &&
 				<button className="btn-delete" aria-label="btn-delete" onClick={onDelete}>
 					<TiDelete className="icon"/>
