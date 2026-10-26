@@ -11,9 +11,11 @@ const IMAGE_BY_DEFAULT = "/src/assets/img/coming-soon.png"
 export default function Menu() {
 	const {menu, isModeAdmin, handleDelete, setIsModeEdit, handleEdit } = useContext(OrderContext)
 
-	const handleClickCard = (product) =>{
+	const handleClick = (idProductClicked) =>{
 		setIsModeEdit(true)
-		handleEdit(product)
+		console.log(idProductClicked)
+		const productSelected = menu.find((product) => product.id === idProductClicked)
+		handleEdit(productSelected)
 	}
 
 	if (menu.length === 0){
@@ -29,7 +31,7 @@ export default function Menu() {
 				const { id, imageSource, title, price } = product
 				return (
 					<Card
-						onClick={() => handleClickCard(product)}
+						onClick={() => handleClick(id)}
 						key={id} 
 						imageSrc={imageSource ? imageSource : IMAGE_BY_DEFAULT} 
 						title={title} 
