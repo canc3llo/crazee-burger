@@ -28,8 +28,8 @@ export default function AddForm() {
 
 	return (
 		<AddFormStyled onSubmit={handleSubmit}>
-			<ImagePreview newProduct={newProduct}/>
-			<InputFields handleChange={handleChange} product={newProduct} />
+			<ImagePreview product={newProduct}/>
+			<InputFields product={newProduct} onChange={handleChange}/>
 			<SubmitButton/>
 		</AddFormStyled>
 	)

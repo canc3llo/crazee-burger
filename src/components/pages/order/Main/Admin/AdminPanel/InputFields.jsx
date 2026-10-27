@@ -2,8 +2,8 @@ import styled from "styled-components"
 import TextInput from "../../../../../reusable-ui/TextInput.jsx"
 import { getProductsInputs } from "./getProductsInputs.jsx";
 
-export default function InputFields({ handleChange, product }) {
-	const inputs = getProductsInputs(product, handleChange)
+export default function InputFields({ product, onChange }) {
+	const inputs = getProductsInputs(product, onChange)
 
 	return (
 		<InputFieldsStyled>

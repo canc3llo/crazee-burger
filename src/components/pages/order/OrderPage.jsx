@@ -18,18 +18,21 @@ export default function OrderPage() {
 	const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 
 	const handleAdd = (newProduct) => {
-		const menuCopy = [...menu]
+		const menuCopy = JSON.parse(JSON.stringify(menu))
 		const menuUpdated = [newProduct, ...menuCopy]
 		setMenu(menuUpdated)
 	}
 
-	const handleEdit = (productSelected) => {
-		const productSelectedCopy = productSelected
-		setProductSelected(productSelectedCopy)
+	const handleEdit = (productBeingEdited) => {
+		console.log(productBeingEdited.id)
+		const menuCopy = JSON.parse(JSON.stringify(menu))
+		const indexProductToEdit = menu.findIndex(product => product.id === productBeingEdited.id)
+		menuCopy[indexProductToEdit] = productBeingEdited
+		setMenu(menuCopy)
 	}
 
 	const handleDelete = (idProductToDelete) => {
-		const menuCopy = [...menu]
+		const menuCopy = JSON.parse(JSON.stringify(menu))
 		const menuUpdated = menuCopy.filter((product) => product.id !== idProductToDelete)
 		setMenu(menuUpdated)
 	}

@@ -9,12 +9,12 @@ import EmptyMenuClient from "./EmptyMenuClient.jsx"
 const IMAGE_BY_DEFAULT = "/src/assets/img/coming-soon.png"
 
 export default function Menu() {
-	const {menu, isModeAdmin, handleDelete, setIsModeEdit, handleEdit } = useContext(OrderContext)
+	const {menu, isModeAdmin, handleDelete, setIsModeEdit, setProductSelected } = useContext(OrderContext)
 
 	const handleClick = (idProductClicked) =>{
-		setIsModeEdit(true)
 		const productSelected = menu.find((product) => product.id === idProductClicked)
-		handleEdit(productSelected)
+		setProductSelected(productSelected)
+		setIsModeEdit(true)
 	}
 
 	if (menu.length === 0){

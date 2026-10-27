@@ -6,18 +6,19 @@ import OrderContext from "../../../../../../context/OrderContext.jsx"
 import ImagePreview from "./ImagePreview.jsx"
 
 export default function EditForm() {
-	const { productSelected, setProductSelected } = useContext(OrderContext)
+	const { productSelected, setProductSelected, handleEdit } = useContext(OrderContext)
 
 	const handleChange = (event) => {
 		const {name, value} = event.target
-		const editProductCopy = {...productSelected, [name] : value}
-		setProductSelected(editProductCopy)
+		const prodBeingEdited = {...productSelected, [name] : value}
+		setProductSelected(prodBeingEdited)
+		handleEdit(prodBeingEdited)
 	}
 
 	return (
 		<EditFormStyled>
-			<ImagePreview newProduct={productSelected} />
-			<InputFields product={productSelected} handleChange={handleChange}/>
+			<ImagePreview product={productSelected} />
+			<InputFields product={productSelected} onChange={handleChange}/>
 			<p>Cliquer sur un produit du menu pour le modifier en temps réel</p>
 		</EditFormStyled>
 	)
