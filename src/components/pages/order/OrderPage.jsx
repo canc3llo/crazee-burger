@@ -5,6 +5,7 @@ import Main from "./Main/Main.jsx"
 import { useState } from "react"
 import OrderContext from "../../../context/OrderContext.jsx"
 import { fakeMenu } from "../../../fakeData/fakeMenu"
+import { EMPTY_PRODUCT } from "../../../enums/product.js"
 
 
 export default function OrderPage() {
@@ -13,8 +14,8 @@ export default function OrderPage() {
 	const [isModeEdit, setIsModeEdit] = useState(false)
 	const [currentTabSelected, setCurrentTabSelected] = useState("edit")
 	const [menu, setMenu] = useState(fakeMenu.MEDIUM)
-	const [newProduct, setNewProduct] = useState(theme.EMPTY_PRODUCT)
-	const [editProduct, setEditProduct] = useState(theme.EMPTY_PRODUCT)
+	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+	const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 
 	const handleAdd = (newProduct) => {
 		const menuCopy = [...menu]
@@ -22,9 +23,9 @@ export default function OrderPage() {
 		setMenu(menuUpdated)
 	}
 
-	const handleEdit = (editProduct) => {
-		const editProductCopy = editProduct
-		setEditProduct(editProductCopy)
+	const handleEdit = (productSelected) => {
+		const productSelectedCopy = productSelected
+		setProductSelected(productSelectedCopy)
 	}
 
 	const handleDelete = (idProductToDelete) => {
@@ -51,10 +52,10 @@ export default function OrderPage() {
 		handleEdit,
 		handleDelete,
 		resetMenu,
-		newProduct, 
+		newProduct,
 		setNewProduct,
-		editProduct, 
-		setEditProduct,
+		productSelected,
+		setProductSelected,
 	}
 
   return (

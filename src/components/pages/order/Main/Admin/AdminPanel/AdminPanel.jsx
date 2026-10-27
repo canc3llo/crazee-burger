@@ -2,12 +2,12 @@ import styled from "styled-components"
 import { theme } from "../../../../../../theme"
 import { useContext } from "react"
 import OrderContext from "../../../../../../context/OrderContext"
-import { getTabsConfig, getTabSelected } from "../getTabsConfig"
+import { getTabsConfig, getTabSelected } from "./getTabsConfig.jsx"
 
 export default function AdminPanel() {
-	const { currentTabSelected } = useContext(OrderContext)
+	const { currentTabSelected, isModeEdit } = useContext(OrderContext)
 
-	const tabs = getTabsConfig()
+	const tabs = getTabsConfig(isModeEdit)
 	const tabSelected = getTabSelected(tabs, currentTabSelected)
 
 	return (

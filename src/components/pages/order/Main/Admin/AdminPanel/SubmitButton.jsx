@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { theme } from "../../../../../theme"
+import { theme } from "../../../../../../theme"
 import { FiCheck } from "react-icons/fi";
 import { useState } from "react";
-import PrimaryButton from "../../../../reusable-ui/PrimaryButton.jsx"
+import PrimaryButton from "../../../../../reusable-ui/PrimaryButton.jsx"
 
 export default function SubmitButton() {
 	const [isSubmitted, setIsSubmitted] = useState(false)

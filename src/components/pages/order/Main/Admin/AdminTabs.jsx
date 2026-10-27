@@ -3,7 +3,7 @@ import Tab from "./Tab"
 import { theme } from "../../../../../theme"
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext"
-import { getTabsConfig } from "./getTabsConfig"
+import { getTabsConfig } from "./AdminPanel/getTabsConfig.jsx"
 import { FiChevronDown } from "react-icons/fi";
 import { FiChevronUp } from "react-icons/fi";
 

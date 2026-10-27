@@ -13,7 +13,6 @@ export default function Menu() {
 
 	const handleClick = (idProductClicked) =>{
 		setIsModeEdit(true)
-		console.log(idProductClicked)
 		const productSelected = menu.find((product) => product.id === idProductClicked)
 		handleEdit(productSelected)
 	}

@@ -1,17 +1,23 @@
 import styled from "styled-components"
-import { theme } from "../../../../../theme"
+import { theme } from "../../../../../../theme"
 import InputFields from "./InputFields"
 import { useContext } from "react"
-import OrderContext from "../../../../../context/OrderContext"
+import OrderContext from "../../../../../../context/OrderContext.jsx"
 import ImagePreview from "./ImagePreview.jsx"
 
 export default function EditForm() {
-	const { editProduct, setEditProduct } = useContext(OrderContext)
+	const { productSelected, setProductSelected } = useContext(OrderContext)
+
+	const handleChange = (event) => {
+		const {name, value} = event.target
+		const editProductCopy = {...productSelected, [name] : value}
+		setProductSelected(editProductCopy)
+	}
 
 	return (
 		<EditFormStyled>
-			<ImagePreview newProduct={editProduct} />
-			<InputFields newProduct={editProduct} setNewProduct={setEditProduct} />
+			<ImagePreview newProduct={productSelected} />
+			<InputFields product={productSelected} handleChange={handleChange}/>
 			<p>Cliquer sur un produit du menu pour le modifier en temps réel</p>
 		</EditFormStyled>
 	)
@@ -34,28 +40,4 @@ const EditFormStyled = styled.div`
 		font-weight: ${theme.weights.regular};
 		margin-bottom: 0px;
 	}
-	
-
-	/* .click-to-edit{
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		margin-top: 50px;
-		width: fit-content;
-		color: ${theme.colors.greyBlue};
-		gap: 0 9px;
-		
-		h2{
-			font-family: Amatic SC, cursive;
-			font-weight: ${theme.weights.regular};
-			width: fit-content;
-			margin: 0;
-			font-size: ${theme.fonts.P3};
-			
-		}
-
-		.icon{
-			font-size: ${theme.fonts.P3};
-		}
-	} */
 `
