@@ -12,8 +12,8 @@ export default function Menu() {
 	const {menu, isModeAdmin, handleDelete, setIsModeEdit, setProductSelected } = useContext(OrderContext)
 
 	const handleClick = (idProductClicked) =>{
-		const productSelected = menu.find((product) => product.id === idProductClicked)
-		setProductSelected(productSelected)
+		const productClickedOn = menu.find((product) => product.id === idProductClicked)
+		setProductSelected(productClickedOn)
 		setIsModeEdit(true)
 	}
 
@@ -37,6 +37,7 @@ export default function Menu() {
 						leftDescription={formatPrice(price)}
 						hasDeleteButton={isModeAdmin}
 						onDelete={() => handleDelete(id)}
+						isHoverable={isModeAdmin}
 					/>
 				)
 			})}
