@@ -3,9 +3,18 @@ import { theme } from "../../theme/index.js"
 import PrimaryButton from "./PrimaryButton.jsx"
 import { TiDelete } from "react-icons/ti";
 
-export default function Card({imageSrc, title, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable}) {
+export default function Card({
+	imageSrc,
+	title,
+	leftDescription,
+	hasDeleteButton,
+	onDelete,
+	onClick,
+	isHoverable,
+	isSelected,
+}) {
 	return (
-		<CardStyled onClick={onClick} isHoverable={isHoverable}>
+		<CardStyled onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
 			<div className="card">
 				{hasDeleteButton &&
 					<button className="btn-delete" aria-label="btn-delete" onClick={onDelete}>
@@ -27,8 +36,6 @@ export default function Card({imageSrc, title, leftDescription, hasDeleteButton,
 }
 
 const CardStyled = styled.div`
-	${(props) => props.isHoverable && hoverableStyle}
-
 	border-radius: ${theme.borderRadius.extraRound};
 	.card{
 		background-color: ${theme.colors.white};
@@ -121,6 +128,8 @@ const CardStyled = styled.div`
 			}
 		}
 	}
+	${(props) => props.isHoverable && hoverableStyle}
+	${(props) => props.isSelected ? selectedStyle : ""}
 `
 const hoverableStyle = css`
 	&:hover{
@@ -129,4 +138,10 @@ const hoverableStyle = css`
 		box-shadow: ${theme.shadows.orangeHighlight};
 		cursor: pointer;
 	}
+`
+
+const selectedStyle = css`
+	.card {
+    background-color: red;
+  }
 `

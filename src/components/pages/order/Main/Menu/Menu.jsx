@@ -9,12 +9,16 @@ import EmptyMenuClient from "./EmptyMenuClient.jsx"
 const IMAGE_BY_DEFAULT = "/src/assets/img/coming-soon.png"
 
 export default function Menu() {
-	const {menu, isModeAdmin, handleDelete, setIsModeEdit, setProductSelected } = useContext(OrderContext)
+	const {menu, isModeAdmin, handleDelete, setIsModeEdit, productSelected, setProductSelected } = useContext(OrderContext)
 
 	const handleClick = (idProductClicked) =>{
 		const productClickedOn = menu.find((product) => product.id === idProductClicked)
 		setProductSelected(productClickedOn)
 		setIsModeEdit(true)
+	}
+
+	const checkIfProductIsSelected = (idProductInMenu, idProductClickedOn) => {
+		return idProductInMenu === idProductClickedOn 
 	}
 
 	if (menu.length === 0){
@@ -38,6 +42,7 @@ export default function Menu() {
 						hasDeleteButton={isModeAdmin}
 						onDelete={() => handleDelete(id)}
 						isHoverable={isModeAdmin}
+						isSelected={checkIfProductIsSelected(id, productSelected.id)}
 					/>
 				)
 			})}
