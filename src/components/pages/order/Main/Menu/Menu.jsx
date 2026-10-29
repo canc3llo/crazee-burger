@@ -5,6 +5,7 @@ import OrderContext from "../../../../../context/OrderContext.jsx"
 import { useContext } from "react"
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx"
 import EmptyMenuClient from "./EmptyMenuClient.jsx"
+import { EMPTY_PRODUCT } from "../../../../../enums/product.js"
 
 const IMAGE_BY_DEFAULT = "/src/assets/img/coming-soon.png"
 
@@ -36,9 +37,11 @@ export default function Menu() {
 		return idProductInMenu === idProductClickedOn 
 	}
 
-	const handleCardDelete = (event, id) => {
+	const handleCardDelete = (event, idProductToDelete) => {
 		event.stopPropagation()
-		handleDelete(id)
+		handleDelete(idProductToDelete)
+		idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
+		editTitleRef.current.focus()
 	}
 
 	const handleAddToBasket = (event) =>{

@@ -4,7 +4,7 @@ import AddForm from "./AddForm";
 import EditForm from "./EditForm";
 import HintMessage from "./HintMessage";
 
-export const getTabsConfig = (isModeEdit) => [
+export const getTabsConfig = (isAProductSelected) => [
 	{
 		index: "add",
 		label: "Ajouter un produit",
@@ -15,7 +15,7 @@ export const getTabsConfig = (isModeEdit) => [
 		index: "edit",
 		label: "Modifier un produit",
 		Icon: <MdModeEditOutline/>,
-		Content: isModeEdit ? <EditForm/> : <HintMessage/>,
+		Content: isAProductSelected ? <EditForm/> : <HintMessage/>,
 	},
 ]
 
