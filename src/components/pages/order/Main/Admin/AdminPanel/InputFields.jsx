@@ -2,7 +2,7 @@ import styled from "styled-components"
 import TextInput from "../../../../../reusable-ui/TextInput.jsx"
 import { getProductsInputs } from "./getProductsInputs.jsx";
 
-export default function InputFields({ product, onChange }) {
+export default function InputFields({ product, onChange, ref }) {
 	const inputs = getProductsInputs(product, onChange)
 
 	return (
@@ -17,6 +17,7 @@ export default function InputFields({ product, onChange }) {
 					placeholder={input.placeholder}
 					className={input.className}
 					version={input.version}
+					ref={input.name === "title" ? ref : null}
 					// {...input}
 				/>
 			))}

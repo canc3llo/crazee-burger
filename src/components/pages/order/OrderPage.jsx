@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { theme } from "../../../theme/index.js"
 import Navbar from "./Navbar/NavBar.jsx"
 import Main from "./Main/Main.jsx"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext.jsx"
 import { fakeMenu } from "../../../fakeData/fakeMenu"
 import { EMPTY_PRODUCT } from "../../../enums/product.js"
@@ -17,6 +17,7 @@ export default function OrderPage() {
 	const [menu, setMenu] = useState(fakeMenu.MEDIUM)
 	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 	const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+	const editTitleRef = useRef()
 
 	const handleAdd = (newProduct) => {
 		const menuCopy = deepClone(menu)
@@ -59,6 +60,7 @@ export default function OrderPage() {
 		setNewProduct,
 		productSelected,
 		setProductSelected,
+		editTitleRef,
 	}
 
   return (

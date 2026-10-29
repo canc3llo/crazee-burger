@@ -12,6 +12,7 @@ export default function Card({
 	onClick,
 	isHoverable,
 	isSelected,
+	onAddToBasket,
 }) {
 	return (
 		<CardStyled onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
@@ -27,7 +28,7 @@ export default function Card({
 					<h1>{title}</h1>
 					<div className="bottom-description">
 						<h2>{leftDescription}</h2>
-						<PrimaryButton version="primary" size="small" label={"Ajouter"}/>
+						<PrimaryButton onClick={onAddToBasket} className="primary-button" version="primary" size="small" label={"Ajouter"}/>
 					</div>
 				</div>
 			</div>
@@ -141,7 +142,60 @@ const hoverableStyle = css`
 `
 
 const selectedStyle = css`
-	.card {
-    background-color: red;
-  }
+	.card{
+		background-color: ${theme.colors.primary};
+		.primary-button {
+			color: ${theme.colors.primary};
+			background-color: ${theme.colors.white};
+			border: 1px solid ${theme.colors.white};
+			transition: all 200ms ease-out;
+			&:hover {
+				color: ${theme.colors.white};
+				background-color: ${theme.colors.primary};
+				border: 1px solid ${theme.colors.white};
+				transition: all 200ms ease-out;
+			}
+			&:active {
+				background-color: ${theme.colors.white};
+				color: ${theme.colors.primary};
+			}
+
+			&.is-disabled {
+				opacity: 50%;
+				cursor: not-allowed;
+				z-index: 2;
+			}
+
+			&.with-focus {
+				border: 1px solid white;
+				background-color: ${theme.colors.white};
+				color: ${theme.colors.primary};
+				&:hover {
+					color: ${theme.colors.white};
+					background-color: ${theme.colors.primary};
+					border: 1px solid ${theme.colors.white};
+				}
+				&:active {
+					background-color: ${theme.colors.white};
+					color: ${theme.colors.primary};
+				}
+			}
+		}
+
+		.btn-delete {
+			color: ${theme.colors.white};
+
+			:active {
+				color: ${theme.colors.white};
+			}
+		}
+
+		.description {
+			.bottom-description {
+				h2{
+					color: ${theme.colors.white};
+				}
+			}
+		}
+	}
 `

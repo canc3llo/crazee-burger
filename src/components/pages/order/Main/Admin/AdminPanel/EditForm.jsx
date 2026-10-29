@@ -6,7 +6,7 @@ import OrderContext from "../../../../../../context/OrderContext.jsx"
 import ImagePreview from "./ImagePreview.jsx"
 
 export default function EditForm() {
-	const { productSelected, setProductSelected, handleEdit } = useContext(OrderContext)
+	const { productSelected, setProductSelected, handleEdit, editTitleRef } = useContext(OrderContext)
 
 	const handleChange = (event) => {
 		const {name, value} = event.target
@@ -18,7 +18,7 @@ export default function EditForm() {
 	return (
 		<EditFormStyled>
 			<ImagePreview product={productSelected} />
-			<InputFields product={productSelected} onChange={handleChange}/>
+			<InputFields product={productSelected} onChange={handleChange} ref={editTitleRef}/>
 			<p>Cliquer sur un produit du menu pour le modifier en temps réel</p>
 		</EditFormStyled>
 	)
