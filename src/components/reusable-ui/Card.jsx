@@ -128,8 +128,8 @@ const CardStyled = styled.div`
 			}
 		}
 	}
-	${(props) => props.isHoverable && hoverableStyle}
-	${(props) => props.isSelected ? selectedStyle : ""}
+	${({isHoverable}) => isHoverable && hoverableStyle}
+	${({isHoverable, isSelected}) => isHoverable && isSelected && selectedStyle}
 `
 const hoverableStyle = css`
 	&:hover{
