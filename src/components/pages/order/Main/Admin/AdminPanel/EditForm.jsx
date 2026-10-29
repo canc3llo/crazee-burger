@@ -36,7 +36,6 @@ const EditFormStyled = styled.div`
 
 	> p{
 		font-size: ${theme.fonts.SM};
-		border: 1px solid red;
 		color: ${theme.colors.primary};
 		font-weight: ${theme.weights.regular};
 		margin-bottom: 0px;
