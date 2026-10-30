@@ -30,7 +30,10 @@ export default function AddForm() {
 		<AddFormStyled onSubmit={handleSubmit}>
 			<ImagePreview product={newProduct}/>
 			<InputFields product={newProduct} onChange={handleChange}/>
-			<SubmitButton/>
+			<SubmitButton 
+				version={"succes"} size={"extralarge"}
+				label={"Ajouter un nouveau produit au menu"}
+				textOnClick={"Ajouté avec succès !"}/>
 		</AddFormStyled>
 	)
 }

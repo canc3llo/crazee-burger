@@ -38,6 +38,8 @@ const EditFormStyled = styled.div`
 		font-size: ${theme.fonts.SM};
 		color: ${theme.colors.primary};
 		font-weight: ${theme.weights.regular};
-		margin-bottom: 0px;
+		margin: 0;
+		padding: 0;
+		align-self: end;
 	}
 `

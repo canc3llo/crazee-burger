@@ -4,7 +4,7 @@ import { FiCheck } from "react-icons/fi";
 import { useState } from "react";
 import PrimaryButton from "../../../../../reusable-ui/PrimaryButton.jsx"
 
-export default function SubmitButton() {
+export default function SubmitButton({version, size, label, textOnClick}) {
 	const [isSubmitted, setIsSubmitted] = useState(false)
 
 	const handleClick = () => {
@@ -18,12 +18,12 @@ export default function SubmitButton() {
 		<SubmitButtonStyled>
 			<PrimaryButton 
 				onClick={handleClick}
-				label={"Ajouter un nouveau produit au menu"}
-				version="succes" size="extralarge"/>
+				label={label}
+				version={version} size={size}/>
 			{isSubmitted && 
 				<div className="succes">
 					<FiCheck />
-					<span>Ajouté avec succès !</span>
+					<span>{textOnClick}</span>
 				</div>}
 		</SubmitButtonStyled>
 	)
