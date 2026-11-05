@@ -6,14 +6,22 @@ export default createContext({
 
 	isCollapsed: false,
 	setIsCollapsed: () => {},
+
+	isModeEdit: false, 
+	setIsModeEdit: () => {},
 	
 	currentTabSelected: "add",
 	setCurrentTabSelected: () => {},
 
 	menu: [],
 	handleAdd: () => {},
+	handleEdit: () => {},
 	handleDelete: () => {},
 	resetMenu: () => {},
-	newProduct: [], 
+
+	newProduct: {}, 
 	setNewProduct: () => {},
+	productSelected: {},
+	setProductSelected: () => {},
+	editTitleRef: {},
 })

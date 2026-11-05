@@ -1,13 +1,15 @@
 import styled from "styled-components"
-import { theme } from "../../../../../theme"
+import { theme } from "../../../../../../theme"
 import { useContext } from "react"
-import OrderContext from "../../../../../context/OrderContext"
-import { getTabsConfig, getTabSelected } from "./getTabsConfig"
+import OrderContext from "../../../../../../context/OrderContext"
+import { getTabsConfig, getTabSelected } from "./getTabsConfig.jsx"
+import { EMPTY_PRODUCT } from "../../../../../../enums/product.js"
 
 export default function AdminPanel() {
-	const { currentTabSelected } = useContext(OrderContext)
+	const { currentTabSelected, productSelected } = useContext(OrderContext)
 
-	const tabs = getTabsConfig()
+	const isAProductSelected = productSelected !== EMPTY_PRODUCT
+	const tabs = getTabsConfig(isAProductSelected)
 	const tabSelected = getTabSelected(tabs, currentTabSelected)
 
 	return (

@@ -2,26 +2,38 @@ import styled from "styled-components"
 import { theme } from "../../../theme/index.js"
 import Navbar from "./Navbar/NavBar.jsx"
 import Main from "./Main/Main.jsx"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext.jsx"
 import { fakeMenu } from "../../../fakeData/fakeMenu"
+import { EMPTY_PRODUCT } from "../../../enums/product.js"
+import { deepClone } from "../../../utils/array.js"
 
 
 export default function OrderPage() {
 	const [isModeAdmin, setIsModeAdmin] = useState(false)
 	const [isCollapsed, setIsCollapsed] = useState(false)
-	const [currentTabSelected, setCurrentTabSelected] = useState("add")
+	const [isModeEdit, setIsModeEdit] = useState(false)
+	const [currentTabSelected, setCurrentTabSelected] = useState("edit")
 	const [menu, setMenu] = useState(fakeMenu.MEDIUM)
-	const [newProduct, setNewProduct] = useState(theme.EMPTY_PRODUCT)
+	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+	const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+	const editTitleRef = useRef()
 
 	const handleAdd = (newProduct) => {
-		const menuCopy = [...menu]
+		const menuCopy = deepClone(menu)
 		const menuUpdated = [newProduct, ...menuCopy]
 		setMenu(menuUpdated)
 	}
 
+	const handleEdit = (productBeingEdited) => {
+		const menuCopy = deepClone(menu)
+		const indexProductToEdit = menu.findIndex(product => product.id === productBeingEdited.id)
+		menuCopy[indexProductToEdit] = productBeingEdited
+		setMenu(menuCopy)
+	}
+
 	const handleDelete = (idProductToDelete) => {
-		const menuCopy = [...menu]
+		const menuCopy = deepClone(menu)
 		const menuUpdated = menuCopy.filter((product) => product.id !== idProductToDelete)
 		setMenu(menuUpdated)
 	}
@@ -35,14 +47,20 @@ export default function OrderPage() {
 		setIsModeAdmin,
 		isCollapsed,
 		setIsCollapsed,
+		isModeEdit, 
+		setIsModeEdit,
 		currentTabSelected, 
 		setCurrentTabSelected,
 		menu,
 		handleAdd,
+		handleEdit,
 		handleDelete,
 		resetMenu,
-		newProduct, 
+		newProduct,
 		setNewProduct,
+		productSelected,
+		setProductSelected,
+		editTitleRef,
 	}
 
   return (

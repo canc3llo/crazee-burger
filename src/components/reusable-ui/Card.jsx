@@ -1,23 +1,35 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../../theme/index.js"
 import PrimaryButton from "./PrimaryButton.jsx"
 import { TiDelete } from "react-icons/ti";
 
-export default function Card({imageSrc, title, leftDescription, hasDeleteButton, onDelete}) {
+export default function Card({
+	imageSrc,
+	title,
+	leftDescription,
+	hasDeleteButton,
+	onDelete,
+	onClick,
+	isHoverable,
+	isSelected,
+	onAddToBasket,
+}) {
 	return (
-		<CardStyled>
-			{hasDeleteButton &&
-				<button className="btn-delete" aria-label="btn-delete" onClick={onDelete}>
-					<TiDelete className="icon"/>
-				</button>}
-			<div className="img-container">
-				<img src={imageSrc} alt={title}/>
-			</div>
-			<div className="description">
-				<h1>{title}</h1>
-				<div className="bottom-description">
-					<h2>{leftDescription}</h2>
-					<PrimaryButton version="primary" size="small" label={"Ajouter"}/>
+		<CardStyled onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
+			<div className="card">
+				{hasDeleteButton &&
+					<button className="btn-delete" aria-label="btn-delete" onClick={onDelete}>
+						<TiDelete className="icon"/>
+					</button>}
+				<div className="img-container">
+					<img src={imageSrc} alt={title}/>
+				</div>
+				<div className="description">
+					<h1>{title}</h1>
+					<div className="bottom-description">
+						<h2>{leftDescription}</h2>
+						<PrimaryButton onClick={onAddToBasket} className="primary-button" version="primary" size="small" label={"Ajouter"}/>
+					</div>
 				</div>
 			</div>
 		</CardStyled>
@@ -25,91 +37,164 @@ export default function Card({imageSrc, title, leftDescription, hasDeleteButton,
 }
 
 const CardStyled = styled.div`
-	background-color: ${theme.colors.white};
 	border-radius: ${theme.borderRadius.extraRound};
-	box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	width: 240px;
-	padding: 50px 20px 20px 20px;
-	box-sizing: border-box;
-	gap: 15px;
-	position: relative;
-
-	.btn-delete{
-		color: ${theme.colors.primary};
-		position: absolute;
-		top: 15px;
-		right: 15px;
-		width: 30px;
-		height: 30px;
-		cursor: pointer;
-		background: none;
-		border: none;
-		padding: 0;
-		z-index: 2;
-
-		&:hover{
-			color: ${theme.colors.red};
-		}
-
-		.icon{
-			width: 100%;
-			height: 100%;
-		}
-	}
-
-	.img-container{
-		flex: 1;
-		min-height: 0;
-		width: 100%;
-		position: relative;
-		box-sizing: border-box;
-
-    img {
-			position: absolute; /* l'image ne fait plus grandir le conteneur */
-    	inset: 0;
-      height: 100%;
-			width: 100%;
-      object-fit: contain;
-			margin: auto;
-			box-sizing: border-box;
-    }
-  }
-
-	.description{
-		flex: 0 0 auto;
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		padding: 0 5px 5px 5px;
-		gap: 5px;
-		box-sizing: border-box;
-
-		h1{
-			margin: 0;
-			text-align: left;
-			font-family: Amatic SC, cursive;
-			font-weight: ${theme.weights.bold};
-			font-style: bold;
-			font-size: ${theme.fonts.P4};
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-
-		.bottom-description{
+	.card{
+		background-color: ${theme.colors.white};
+		border-radius: ${theme.borderRadius.extraRound};
+		box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		flex-direction: column;
+		width: 240px;
+		height: 100%;
+		padding: 50px 20px 20px 20px;
 		box-sizing: border-box;
-  	width: 100%;
+		gap: 15px;
+		position: relative;
 
-			h2{
-				font-weight: 300;
-				font-size: 16px;
+		.btn-delete{
+			color: ${theme.colors.primary};
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			width: 30px;
+			height: 30px;
+			cursor: pointer;
+			background: none;
+			border: none;
+			padding: 0;
+			z-index: 2;
+
+			&:hover{
+				color: ${theme.colors.red};
+			}
+
+			.icon{
+				width: 100%;
+				height: 100%;
+			}
+		}
+
+		.img-container{
+			flex: 1;
+			min-height: 0;
+			width: 100%;
+			position: relative;
+			box-sizing: border-box;
+
+			img {
+				position: absolute; /* l'image ne fait plus grandir le conteneur */
+				inset: 0;
+				height: 100%;
+				width: 100%;
+				object-fit: contain;
+				margin: auto;
+				box-sizing: border-box;
+			}
+		}
+
+		.description{
+			flex: 0 0 auto;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			padding: 0 5px 5px 5px;
+			gap: 5px;
+			box-sizing: border-box;
+
+			h1{
+				margin: 0;
+				text-align: left;
+				font-family: Amatic SC, cursive;
+				font-weight: ${theme.weights.bold};
+				font-style: bold;
+				font-size: ${theme.fonts.P4};
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.bottom-description{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			box-sizing: border-box;
+			width: 100%;
+
+				h2{
+					font-weight: 300;
+					font-size: 16px;
+					color: ${theme.colors.primary};
+				}
+			}
+		}
+	}
+	${({isHoverable}) => isHoverable && hoverableStyle}
+	${({isHoverable, isSelected}) => isHoverable && isSelected && selectedStyle}
+`
+const hoverableStyle = css`
+	&:hover{
+		transform: scale(1.05);
+		transition: ease-out 0.4s;
+		box-shadow: ${theme.shadows.orangeHighlight};
+		cursor: pointer;
+	}
+`
+
+const selectedStyle = css`
+	.card{
+		background-color: ${theme.colors.primary};
+		.primary-button {
+			color: ${theme.colors.primary};
+			background-color: ${theme.colors.white};
+			border: 1px solid ${theme.colors.white};
+			transition: all 200ms ease-out;
+			&:hover {
+				color: ${theme.colors.white};
+				background-color: ${theme.colors.primary};
+				border: 1px solid ${theme.colors.white};
+				transition: all 200ms ease-out;
+			}
+			&:active {
+				background-color: ${theme.colors.white};
 				color: ${theme.colors.primary};
+			}
+
+			&.is-disabled {
+				opacity: 50%;
+				cursor: not-allowed;
+				z-index: 2;
+			}
+
+			&.with-focus {
+				border: 1px solid white;
+				background-color: ${theme.colors.white};
+				color: ${theme.colors.primary};
+				&:hover {
+					color: ${theme.colors.white};
+					background-color: ${theme.colors.primary};
+					border: 1px solid ${theme.colors.white};
+				}
+				&:active {
+					background-color: ${theme.colors.white};
+					color: ${theme.colors.primary};
+				}
+			}
+		}
+
+		.btn-delete {
+			color: ${theme.colors.white};
+
+			:active {
+				color: ${theme.colors.white};
+			}
+		}
+
+		.description {
+			.bottom-description {
+				h2{
+					color: ${theme.colors.white};
+				}
 			}
 		}
 	}

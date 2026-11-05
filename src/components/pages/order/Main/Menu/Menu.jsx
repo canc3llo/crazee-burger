@@ -5,12 +5,48 @@ import OrderContext from "../../../../../context/OrderContext.jsx"
 import { useContext } from "react"
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx"
 import EmptyMenuClient from "./EmptyMenuClient.jsx"
+import { EMPTY_PRODUCT } from "../../../../../enums/product.js"
 
 const IMAGE_BY_DEFAULT = "/src/assets/img/coming-soon.png"
 
 export default function Menu() {
-	const {menu, isModeAdmin, handleDelete } = useContext(OrderContext)
+	const {
+		menu,
+		isModeAdmin,
+		handleDelete,
+		setIsModeEdit,
+		productSelected,
+		setProductSelected,
+		setIsCollapsed,
+		setCurrentTabSelected,
+		editTitleRef,
+	} = useContext(OrderContext)
 
+	const handleClick = async (idProductClicked) =>{
+		if (!isModeAdmin) return
+
+		const productClickedOn = menu.find((product) => product.id === idProductClicked)
+		await setIsCollapsed(false)
+		await setCurrentTabSelected("edit")
+		await setIsModeEdit(true)
+		await setProductSelected(productClickedOn)
+		editTitleRef.current.focus() 
+	}
+
+	const checkIfProductIsSelected = (idProductInMenu, idProductClickedOn) => {
+		return idProductInMenu === idProductClickedOn 
+	}
+
+	const handleCardDelete = (event, idProductToDelete) => {
+		event.stopPropagation()
+		handleDelete(idProductToDelete)
+		idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
+		editTitleRef.current.focus()
+	}
+
+	const handleAddToBasket = (event) =>{
+		event.stopPropagation()
+	}
 
 	if (menu.length === 0){
 		if(!isModeAdmin)
@@ -21,15 +57,20 @@ export default function Menu() {
 	
 	return (
 		<MenuStyled>
-			{menu.map(({id, imageSource, title, price}) => {
+			{menu.map((product) => {
+				const { id, imageSource, title, price } = product
 				return (
 					<Card
+						onClick={() => handleClick(id)}
 						key={id} 
 						imageSrc={imageSource ? imageSource : IMAGE_BY_DEFAULT} 
 						title={title} 
 						leftDescription={formatPrice(price)}
 						hasDeleteButton={isModeAdmin}
-						onDelete={() => handleDelete(id)}
+						onDelete={(event) => handleCardDelete(event, id)}
+						isHoverable={isModeAdmin}
+						isSelected={checkIfProductIsSelected(id, productSelected.id)}
+						onAddToBasket={(event) => handleAddToBasket(event)}
 					/>
 				)
 			})}

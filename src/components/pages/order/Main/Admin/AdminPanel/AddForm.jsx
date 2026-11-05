@@ -2,9 +2,9 @@ import styled from "styled-components"
 import InputFields from "./InputFields"
 import SubmitButton from "./SubmitButton"
 import { useContext  } from "react"
-import OrderContext from "../../../../../context/OrderContext.jsx"
-import { theme } from "../../../../../theme/index.js"
+import OrderContext from "../../../../../../context/OrderContext.jsx"
 import ImagePreview from "./ImagePreview.jsx"
+import { EMPTY_PRODUCT } from "../../../../../../enums/product.js"
 
 export default function AddForm() {
 	const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
@@ -18,14 +18,22 @@ export default function AddForm() {
 		}
 
 		handleAdd(newProductToAdd)
-		setNewProduct(theme.EMPTY_PRODUCT)
+		setNewProduct(EMPTY_PRODUCT)
+	}
+
+	const handleChange = (event) => {
+		const {name, value} = event.target
+		setNewProduct({...newProduct, [name] : value})
 	}
 
 	return (
 		<AddFormStyled onSubmit={handleSubmit}>
-			<ImagePreview newProduct={newProduct}/>
-			<InputFields newProduct={newProduct} setNewProduct={setNewProduct}/>
-			<SubmitButton/>
+			<ImagePreview product={newProduct}/>
+			<InputFields product={newProduct} onChange={handleChange}/>
+			<SubmitButton 
+				version={"succes"} size={"extralarge"}
+				label={"Ajouter un nouveau produit au menu"}
+				textOnClick={"Ajouté avec succès !"}/>
 		</AddFormStyled>
 	)
 }

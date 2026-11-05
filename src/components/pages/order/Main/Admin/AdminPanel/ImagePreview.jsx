@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { theme } from '../../../../../theme'
+import { theme } from '../../../../../../theme'
 
-export default function ImagePreview({newProduct}) {
+export default function ImagePreview({product}) {
 	return (
 		<ImagePreviewStyled>
-			{newProduct.imageSource ? ( 
-					<img src={newProduct.imageSource} alt={newProduct.imageSource} /> 
+			{product.imageSource ? ( 
+					<img src={product.imageSource} alt={product.imageSource} /> 
 				) : (
 					<p>Aucune image</p>
 				)
