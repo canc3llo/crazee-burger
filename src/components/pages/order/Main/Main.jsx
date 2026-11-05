@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import Menu from "./Menu/Menu.jsx"
-// import Basket from "./Basket.jsx"
+import Basket from "./Basket/Basket.jsx"
 import { theme } from "../../../../theme/index.js"
 import Admin from "./Admin/Admin.jsx"
 import OrderContext from "../../../../context/OrderContext.jsx"
@@ -11,7 +11,7 @@ export default function Main() {
 
 	return (
 		<MainStyled>
-			{/* <Basket/> */}
+			<Basket/>
 			<div className="menu-and-admin">
 				<Menu/>
 				{isModeAdmin && <Admin/>}
@@ -34,7 +34,7 @@ const MainStyled = styled.div`
 	height: 100%;
 	overflow: hidden;
 	display: grid;
-	grid-template-columns: 1fr;
+	grid-template-columns: 350px 1fr;
 
 	.menu-and-admin{
 		position: relative;
