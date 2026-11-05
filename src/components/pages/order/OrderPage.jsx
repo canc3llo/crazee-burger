@@ -4,43 +4,19 @@ import Navbar from "./Navbar/NavBar.jsx"
 import Main from "./Main/Main.jsx"
 import { useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext.jsx"
-import { fakeMenu } from "../../../fakeData/fakeMenu"
 import { EMPTY_PRODUCT } from "../../../enums/product.js"
-import { deepClone } from "../../../utils/array.js"
-
+import { useMenu } from "../../../hooks/useMenu.js"
 
 export default function OrderPage() {
 	const [isModeAdmin, setIsModeAdmin] = useState(false)
 	const [isCollapsed, setIsCollapsed] = useState(false)
 	const [isModeEdit, setIsModeEdit] = useState(false)
 	const [currentTabSelected, setCurrentTabSelected] = useState("edit")
-	const [menu, setMenu] = useState(fakeMenu.MEDIUM)
 	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 	const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 	const editTitleRef = useRef()
+	const { menu, handleAdd, handleEdit, handleDelete, resetMenu } = useMenu()
 
-	const handleAdd = (newProduct) => {
-		const menuCopy = deepClone(menu)
-		const menuUpdated = [newProduct, ...menuCopy]
-		setMenu(menuUpdated)
-	}
-
-	const handleEdit = (productBeingEdited) => {
-		const menuCopy = deepClone(menu)
-		const indexProductToEdit = menu.findIndex(product => product.id === productBeingEdited.id)
-		menuCopy[indexProductToEdit] = productBeingEdited
-		setMenu(menuCopy)
-	}
-
-	const handleDelete = (idProductToDelete) => {
-		const menuCopy = deepClone(menu)
-		const menuUpdated = menuCopy.filter((product) => product.id !== idProductToDelete)
-		setMenu(menuUpdated)
-	}
-
-	const resetMenu = () => {
-		setMenu(fakeMenu.MEDIUM)
-	}
 
 	const orderContextValue = {
 		isModeAdmin,
