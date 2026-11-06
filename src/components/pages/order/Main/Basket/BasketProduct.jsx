@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 import { theme } from '../../../../../theme'
 
-export default function BasketProduct({ title}) {
+export default function BasketProduct({ title, amount}) {
 	return (
 		<BasketProductStyled>
 			<p>{title}</p>
+			<p>x{amount}</p>
 		</BasketProductStyled>
 	)
 }

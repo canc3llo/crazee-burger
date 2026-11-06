@@ -15,7 +15,7 @@ export default function BasketBody() {
 				<p>Votre commande est vide.</p>
 			) : (
 				basketProducts.map((product) => (
-					<BasketProduct key={product.id} title={product.title} />
+					<BasketProduct key={product.id} title={product.title} amount={product.quantity} />
 				))
 			)}
 		</BasketBodyStyled>
