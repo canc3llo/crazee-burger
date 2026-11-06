@@ -7,6 +7,7 @@ import OrderContext from "../../../context/OrderContext.jsx"
 import { EMPTY_PRODUCT } from "../../../enums/product.js"
 import { useMenu } from "../../../hooks/useMenu.js"
 import { fakeMenu } from "../../../fakeData/fakeMenu.js"
+import { deepClone } from "../../../utils/array"
 
 export default function OrderPage() {
 	const [isModeAdmin, setIsModeAdmin] = useState(false)
@@ -18,6 +19,14 @@ export default function OrderPage() {
 	const editTitleRef = useRef()
 	const { menu, handleAdd, handleEdit, handleDelete, resetMenu } = useMenu()
 	const [basketProducts, setBasketProducts] = useState(fakeMenu.SMALL)
+
+	const handleAddToBasket = (idProductAddToBasket) => {
+		const basketProductsCopy = deepClone(basketProducts)
+		const productToAdd = menu.find((product) => product.id === idProductAddToBasket)
+		const basketProductsUpdated = [productToAdd, ...basketProductsCopy]
+		setBasketProducts(basketProductsUpdated)
+	}
+
 
 	const orderContextValue = {
 		isModeAdmin,
@@ -40,6 +49,7 @@ export default function OrderPage() {
 		editTitleRef,
 		basketProducts,
 		setBasketProducts,
+		handleAddToBasket,
 	}
 
   return (
