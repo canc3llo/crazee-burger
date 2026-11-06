@@ -15,7 +15,12 @@ export default function BasketBody() {
 				<p>Votre commande est vide.</p>
 			) : (
 				basketProducts.map((product) => (
-					<BasketProduct key={product.id} title={product.title} amount={product.quantity} />
+					<BasketProduct 
+						key={product.id} 
+						title={product.title} 
+						amount={product.quantity} 
+						imageSrc={product.imageSource}
+						price={product.price} 	/>
 				))
 			)}
 		</BasketBodyStyled>
@@ -29,11 +34,14 @@ const BasketBodyStyled = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	font-family: "Amatic SC", cursive;
 	font-size: ${theme.fonts.P4};
 	font-weight: ${theme.weights.regular};
 	color: ${theme.colors.greyBlue};
 	padding: 0 16px;
 	box-sizing: border-box;
 	gap: 20px;
+
+	> p{
+		font-family: "Amatic SC", cursive;
+	}
 `
