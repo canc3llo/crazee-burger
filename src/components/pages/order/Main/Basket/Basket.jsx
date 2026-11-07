@@ -32,4 +32,7 @@ const BasketStyled = styled.div`
 	flex-direction: column;
 	align-items: center;
 	box-shadow: ${theme.shadows.basket};
+	height: 100%;       /* ou une hauteur fixe / 100vh selon ton layout */
+  min-height: 0;
+  overflow: hidden;
 `

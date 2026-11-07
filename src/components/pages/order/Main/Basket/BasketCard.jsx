@@ -20,7 +20,8 @@ export default function BasketCard({ title, amount, imageSrc, price }) {
 }
 
 const BasketCardStyled = styled.div`
-	background-color: grey;
+	background-color: ${theme.colors.white};
+	box-shadow: ${theme.shadows.cardBasket};
 	width: 100%;
 	height: 86px;
 	border-radius: ${theme.borderRadius.round};
@@ -28,7 +29,6 @@ const BasketCardStyled = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	flex-direction: row;
-	color: ${theme.colors.white};
 	padding: 8px 16px;
 	box-sizing: border-box;
 

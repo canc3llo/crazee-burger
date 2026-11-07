@@ -31,4 +31,6 @@ const BasketWithProductsStyled = styled.div`
 	padding: 20px 16px;
 	box-sizing: border-box;
 	gap: 20px;
+	min-height: 0;
+  overflow-y: auto;
 `
