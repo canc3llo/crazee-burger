@@ -2,9 +2,9 @@ import styled from 'styled-components'
 import { theme } from '../../../../../theme'
 import {formatPrice} from '../../../../../utils/maths'
 
-export default function BasketProduct({ title, amount, imageSrc, price }) {
+export default function BasketCard({ title, amount, imageSrc, price }) {
 	return (
-		<BasketProductStyled>
+		<BasketCardStyled>
 			<div className="img-container">
 				<img src={imageSrc} alt={title}/>
 			</div>
@@ -15,11 +15,11 @@ export default function BasketProduct({ title, amount, imageSrc, price }) {
 			<div className="amount">
 				<p>x {amount}</p>
 			</div>
-		</BasketProductStyled>
+		</BasketCardStyled>
 	)
 }
 
-const BasketProductStyled = styled.div`
+const BasketCardStyled = styled.div`
 	background-color: grey;
 	width: 100%;
 	height: 86px;
@@ -67,7 +67,6 @@ const BasketProductStyled = styled.div`
 			white-space: nowrap;
   		overflow: hidden;
   		text-overflow: ellipsis;
-			border : 1px solid blue;
 			min-height: 1.2em;   /* réserve la place d'une ligne même si vide */
   		line-height: 1.2;
 		}
@@ -77,7 +76,6 @@ const BasketProductStyled = styled.div`
 			font-weight: ${theme.weights.light};
 			color: ${theme.colors.primary};
 			margin: 0;
-			border : 1px solid red;	
 		}
 	}
 
