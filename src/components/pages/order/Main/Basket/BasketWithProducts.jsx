@@ -3,9 +3,10 @@ import { theme } from '../../../../../theme/index.js'
 import BasketCard from './BasketCard.jsx'
 import { useContext } from 'react'
 import OrderContext from '../../../../../context/OrderContext.jsx'
+import { findInArray } from '../../../../../utils/array.js'
 
 export default function BasketWithProducts({ basketProducts }) {
-	const {handleDeleteFromBasket, isModeAdmin, productSelected, handleProductSelected} = useContext(OrderContext)
+	const {handleDeleteFromBasket, isModeAdmin, productSelected, handleProductSelected, menu} = useContext(OrderContext)
 
 	const handleOnDeleteButton = (productId) => {
 		handleDeleteFromBasket(productId)
@@ -22,19 +23,23 @@ export default function BasketWithProducts({ basketProducts }) {
 
 	return (
     <BasketWithProductsStyled>
-      {basketProducts.map((product) => (
-        <BasketCard
-          key={product.id}
-          title={product.title}
-          amount={product.quantity}
-          imageSrc={product.imageSource}
-          price={product.price}
-					onDelete={() => handleOnDeleteButton(product.id)}
-					isHoverable={isModeAdmin}
-					isSelected={checkIfProductIsSelected(product.id, productSelected.id)}
-					onClick={() => handleClick(product.id)}
-        />
-      ))}
+      {basketProducts.map((product) => {
+				const productInMenu = findInArray(menu, product.id)
+				if (!productInMenu) return null
+				return (
+					<BasketCard
+						key={productInMenu.id}
+						title={productInMenu.title}
+						amount={product.quantity}
+						imageSrc={productInMenu.imageSource}
+						price={productInMenu.price}
+						onDelete={() => handleOnDeleteButton(productInMenu.id)}
+						isHoverable={isModeAdmin}
+						isSelected={checkIfProductIsSelected(productInMenu.id, productSelected.id)}
+						onClick={() => handleClick(productInMenu.id)}
+					/>
+				)
+			})}
     </BasketWithProductsStyled>
   )
 }

@@ -10,7 +10,8 @@ export default function EditForm() {
 
 	const handleChange = (event) => {
 		const {name, value} = event.target
-		const prodBeingEdited = {...productSelected, [name] : value}
+		const cleanedValue = name === 'price' ? value.replace(',', '.') : value
+		const prodBeingEdited = {...productSelected, [name] : cleanedValue}
 		setProductSelected(prodBeingEdited)
 		handleEdit(prodBeingEdited)
 	}

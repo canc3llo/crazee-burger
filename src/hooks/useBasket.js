@@ -1,12 +1,11 @@
-import { useState } from "react"
+ import { useState } from "react"
 import { deepClone, findInArray } from "../utils/array"
 
-export const useBasket = (menu) => {
+export const useBasket = () => {
 	const [basketProducts, setBasketProducts] = useState([])
-	
+
 	const handleAddToBasket = (idProductAddToBasket) => {
 		const basketProductsCopy = deepClone(basketProducts)
-
 		const productAlreadyInBasket = findInArray(basketProductsCopy, idProductAddToBasket)
 
 		if (productAlreadyInBasket) {
@@ -15,9 +14,10 @@ export const useBasket = (menu) => {
 			return
 		}
 
-		const productToAdd = findInArray(menu, idProductAddToBasket)
-		const newBasketProduct = { ...productToAdd, quantity: 1 }
-		setBasketProducts([newBasketProduct, ...basketProductsCopy])
+		const newBasketCard = { id: idProductAddToBasket, quantity: 1 }
+		const newBasketProducts = [newBasketCard, ...basketProductsCopy]
+
+		setBasketProducts(newBasketProducts)
 	}
 
 	const handleDeleteFromBasket = (idProductDeleteFromBasket) => {

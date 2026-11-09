@@ -16,7 +16,6 @@ export default function Menu() {
 		handleDelete,
 		productSelected,
 		setProductSelected,
-		editTitleRef,
 		handleAddToBasket,
 		handleProductSelected,
 	} = useContext(OrderContext)
@@ -34,7 +33,6 @@ export default function Menu() {
 		event.stopPropagation()
 		handleDelete(idProductToDelete)
 		idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-		editTitleRef.current.focus()
 	}
 
 	const handleAdd = (event, idProductAddToBasket) =>{
