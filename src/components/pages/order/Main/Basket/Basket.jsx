@@ -13,9 +13,17 @@ export default function Basket() {
 
 	const isBasketEmpty = !basketProducts || basketProducts.length === 0
 
+	const totalToPay = basketProducts.reduce((total, product) => {
+		if (isNaN(product.price) || isNaN(product.quantity)) {
+			return total
+		}
+		return total + product.price * product.quantity
+	}, 0)
+	
+
 	return (
 		<BasketStyled>
-			<Total amountToPay={formatPrice(0)}/>
+			<Total amountToPay={formatPrice(totalToPay)}/>
 			{isBasketEmpty ? 
 				( <BasketEmpty /> )
 				: 
