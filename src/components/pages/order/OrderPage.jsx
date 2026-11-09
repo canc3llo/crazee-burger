@@ -6,7 +6,7 @@ import { useRef, useState } from "react"
 import OrderContext from "../../../context/OrderContext.jsx"
 import { EMPTY_PRODUCT } from "../../../enums/product.js"
 import { useMenu } from "../../../hooks/useMenu.js"
-import { deepClone } from "../../../utils/array"
+import { useBasket } from "../../../hooks/useBasket.js"
 
 export default function OrderPage() {
 	const [isModeAdmin, setIsModeAdmin] = useState(false)
@@ -17,25 +17,7 @@ export default function OrderPage() {
 	const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 	const editTitleRef = useRef()
 	const { menu, handleAdd, handleEdit, handleDelete, resetMenu } = useMenu()
-	const [basketProducts, setBasketProducts] = useState([])
-
-	const handleAddToBasket = (idProductAddToBasket) => {
-		const basketProductsCopy = deepClone(basketProducts)
-
-		const productAlreadyInBasket = basketProductsCopy.find(
-			(product) => product.id === idProductAddToBasket
-		)
-
-		if (productAlreadyInBasket) {
-			productAlreadyInBasket.quantity += 1
-			setBasketProducts(basketProductsCopy)
-			return
-		}
-
-		const productToAdd = menu.find((product) => product.id === idProductAddToBasket)
-		const newBasketProduct = { ...productToAdd, quantity: 1 }
-		setBasketProducts([newBasketProduct, ...basketProductsCopy])
-	}
+	const { handleAddToBasket, basketProducts, setBasketProducts } = useBasket(menu)
 
 
 	const orderContextValue = {
