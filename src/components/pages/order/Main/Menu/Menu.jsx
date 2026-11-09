@@ -20,6 +20,7 @@ export default function Menu() {
 		setIsCollapsed,
 		setCurrentTabSelected,
 		editTitleRef,
+		handleAddToBasket,
 	} = useContext(OrderContext)
 
 	const handleClick = async (idProductClicked) =>{
@@ -44,8 +45,9 @@ export default function Menu() {
 		editTitleRef.current.focus()
 	}
 
-	const handleAddToBasket = (event) =>{
+	const handleAdd = (event, idProductAddToBasket) =>{
 		event.stopPropagation()
+		handleAddToBasket(idProductAddToBasket)
 	}
 
 	if (menu.length === 0){
@@ -70,7 +72,7 @@ export default function Menu() {
 						onDelete={(event) => handleCardDelete(event, id)}
 						isHoverable={isModeAdmin}
 						isSelected={checkIfProductIsSelected(id, productSelected.id)}
-						onAddToBasket={(event) => handleAddToBasket(event)}
+						onAddToBasket={(event) => handleAdd(event, id)}
 					/>
 				)
 			})}
