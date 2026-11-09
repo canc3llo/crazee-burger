@@ -19,6 +19,17 @@ export default function OrderPage() {
 	const { menu, handleAdd, handleEdit, handleDelete, resetMenu } = useMenu()
 	const { handleAddToBasket, handleDeleteFromBasket, basketProducts, setBasketProducts } = useBasket(menu)
 
+	const handleProductSelected = (idProductClicked) => {
+		const productClickedOn = menu.find((product) => product.id === idProductClicked)
+
+		setIsCollapsed(false)
+		setCurrentTabSelected("edit")
+		setIsModeEdit(true)
+		setProductSelected(productClickedOn)
+
+		setTimeout(() => editTitleRef.current?.focus(), 0)
+	}
+
 
 	const orderContextValue = {
 		isModeAdmin,
@@ -43,6 +54,7 @@ export default function OrderPage() {
 		setBasketProducts,
 		handleAddToBasket,
 		handleDeleteFromBasket,
+		handleProductSelected,
 	}
 
   return (

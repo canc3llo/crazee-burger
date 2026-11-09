@@ -1,12 +1,12 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { theme } from '../../../../../theme'
 import {formatPrice} from '../../../../../utils/maths'
 import { MdDeleteForever } from 'react-icons/md'
 import comingsoon from "../../../../../assets/img/coming-soon.png"
 
-export default function BasketCard({ title, amount, imageSrc, price, onDelete }) {
+export default function BasketCard({ title, amount, imageSrc, price, onDelete, onClick, isHoverable, isSelected=true}) {
 	return (
-		<BasketCardStyled>
+		<BasketCardStyled onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
 			<div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
@@ -139,5 +139,31 @@ const BasketCardStyled = styled.div`
         }
       }
     }
+	}
+	${({isHoverable}) => isHoverable && hoverableStyle}
+	${({isHoverable, isSelected}) => isHoverable && isSelected && selectedStyle}
+`
+
+const hoverableStyle = css`
+	&:hover{
+		transition: ease-out 0.4s;
+		box-shadow: ${theme.shadows.orangeHighlight};
+		cursor: pointer;
+	}
+`
+
+const selectedStyle = css`
+	background-color: ${theme.colors.primary};
+
+	.description{
+		> h2{
+			color: ${theme.colors.white};
+		}
+	}
+
+	.amount{
+		> p{
+			color: ${theme.colors.white};
+		}
 	}
 `

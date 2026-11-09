@@ -14,24 +14,16 @@ export default function Menu() {
 		menu,
 		isModeAdmin,
 		handleDelete,
-		setIsModeEdit,
 		productSelected,
 		setProductSelected,
-		setIsCollapsed,
-		setCurrentTabSelected,
 		editTitleRef,
 		handleAddToBasket,
+		handleProductSelected,
 	} = useContext(OrderContext)
 
-	const handleClick = async (idProductClicked) =>{
+	const handleClick = (idProductClicked) =>{
 		if (!isModeAdmin) return
-
-		const productClickedOn = menu.find((product) => product.id === idProductClicked)
-		await setIsCollapsed(false)
-		await setCurrentTabSelected("edit")
-		await setIsModeEdit(true)
-		await setProductSelected(productClickedOn)
-		editTitleRef.current.focus() 
+		handleProductSelected(idProductClicked)
 	}
 
 	const checkIfProductIsSelected = (idProductInMenu, idProductClickedOn) => {

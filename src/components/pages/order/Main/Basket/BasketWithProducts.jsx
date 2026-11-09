@@ -5,10 +5,19 @@ import { useContext } from 'react'
 import OrderContext from '../../../../../context/OrderContext.jsx'
 
 export default function BasketWithProducts({ basketProducts }) {
-	const {handleDeleteFromBasket} = useContext(OrderContext)
+	const {handleDeleteFromBasket, isModeAdmin, productSelected, handleProductSelected} = useContext(OrderContext)
 
 	const handleOnDeleteButton = (productId) => {
 		handleDeleteFromBasket(productId)
+	}
+
+	const checkIfProductIsSelected = (idProductInMenu, idProductClickedOn) => {
+		return idProductInMenu === idProductClickedOn 
+	}
+
+	const handleClick = (idProductClicked) =>{
+		if (!isModeAdmin) return
+		handleProductSelected(idProductClicked)
 	}
 
 	return (
@@ -21,6 +30,9 @@ export default function BasketWithProducts({ basketProducts }) {
           imageSrc={product.imageSource}
           price={product.price}
 					onDelete={() => handleOnDeleteButton(product.id)}
+					isHoverable={isModeAdmin}
+					isSelected={checkIfProductIsSelected(product.id, productSelected.id)}
+					onClick={() => handleClick(product.id)}
         />
       ))}
     </BasketWithProductsStyled>
