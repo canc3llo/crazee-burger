@@ -1,17 +1,26 @@
 import styled from 'styled-components'
 import { theme } from '../../../../../theme/index.js'
-import BasketProduct from './BasketCard.jsx'
+import BasketCard from './BasketCard.jsx'
+import { useContext } from 'react'
+import OrderContext from '../../../../../context/OrderContext.jsx'
 
 export default function BasketWithProducts({ basketProducts }) {
+	const {handleDeleteFromBasket} = useContext(OrderContext)
+
+	const handleOnDeleteButton = (productId) => {
+		handleDeleteFromBasket(productId)
+	}
+
 	return (
     <BasketWithProductsStyled>
       {basketProducts.map((product) => (
-        <BasketProduct
+        <BasketCard
           key={product.id}
           title={product.title}
           amount={product.quantity}
           imageSrc={product.imageSource}
           price={product.price}
+					onDelete={() => handleOnDeleteButton(product.id)}
         />
       ))}
     </BasketWithProductsStyled>

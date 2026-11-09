@@ -1,12 +1,17 @@
 import styled from 'styled-components'
 import { theme } from '../../../../../theme'
 import {formatPrice} from '../../../../../utils/maths'
+import { MdDeleteForever } from 'react-icons/md'
+import comingsoon from "../../../../../assets/img/coming-soon.png"
 
-export default function BasketCard({ title, amount, imageSrc, price }) {
+export default function BasketCard({ title, amount, imageSrc, price, onDelete }) {
 	return (
 		<BasketCardStyled>
+			<div className="delete-button" onClick={onDelete}>
+        <MdDeleteForever className="icon" />
+      </div>
 			<div className="img-container">
-				<img src={imageSrc} alt={title}/>
+				<img src={imageSrc || comingsoon} alt={title}/>
 			</div>
 			<div className="description">
 				<h1>{title}</h1>
@@ -20,6 +25,7 @@ export default function BasketCard({ title, amount, imageSrc, price }) {
 }
 
 const BasketCardStyled = styled.div`
+	position: relative;
 	background-color: ${theme.colors.white};
 	box-shadow: ${theme.shadows.cardBasket};
 	width: 100%;
@@ -57,6 +63,7 @@ const BasketCardStyled = styled.div`
 		flex-direction: column;
 		gap: 8px;
 		min-width: 0;
+		user-select: none;
 
 		h1{
 			font-family: "Amatic SC", cursive;
@@ -88,5 +95,49 @@ const BasketCardStyled = styled.div`
 			color: ${theme.colors.primary};
 			margin: 0;
 		}
+	}
+
+	.delete-button {
+    display: none;
+    z-index: 1;
+  }
+
+	&:hover {
+    .delete-button {
+      /* border: 1px solid red; */
+      border: none;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 76px;
+      border-top-right-radius: ${theme.borderRadius.round};
+      border-bottom-right-radius: ${theme.borderRadius.round};
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: ${theme.colors.red};
+      color: ${theme.colors.white};
+      cursor: pointer;
+
+      .icon {
+        width: ${theme.fonts.P3};
+        height: ${theme.fonts.P3};
+      }
+
+      /* behaviour on delete-button hover */
+      &:hover {
+        .icon {
+          color: ${theme.colors.dark};
+        }
+        &:active {
+          .icon {
+            color: ${theme.colors.white};
+          }
+        }
+      }
+    }
 	}
 `
