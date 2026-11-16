@@ -5,6 +5,7 @@ import { useContext  } from "react"
 import OrderContext from "../../../../../../context/OrderContext.jsx"
 import ImagePreview from "./ImagePreview.jsx"
 import { EMPTY_PRODUCT } from "../../../../../../enums/product.js"
+import { replaceFrenchCommaWithDot } from "../../../../../../utils/maths.js"
 
 export default function AddForm() {
 	const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
@@ -15,6 +16,7 @@ export default function AddForm() {
 		const newProductToAdd = {
 			...newProduct,
 			id : crypto.randomUUID(),
+			price : replaceFrenchCommaWithDot(newProduct.price)
 		}
 
 		handleAdd(newProductToAdd)
